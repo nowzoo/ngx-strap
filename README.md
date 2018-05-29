@@ -34,7 +34,7 @@ ng serve --open
 # run unit tests on the library with ng
 ng test my-test-library
 # run unit tests on the demo app with ng
-ng test 
+ng test
 
 # build the library for production
 npm run buildLib
@@ -68,7 +68,8 @@ ng g library your-library-name
   9. Update `projects/your-library-name/package.json` with:
       - the `name`, `description`, `keywords`, `repository`, and `license` fields should be the same as what appears in the main `package.json`
       - the library dependencies should probably all be in `peerDependencies`
-  10. Make something great.
+  10. If you use Wallaby, update `wallaby.js`. Replace all instances of `my-test-library` with your library name.
+  11. Make something great.
 
 ## Publishing the library
 
