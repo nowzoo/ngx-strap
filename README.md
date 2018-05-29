@@ -49,6 +49,7 @@ npm run buildDemo
 ```bash
 git remote remove origin
 git remote add origin git@github.com:your-id/your-library-name.git
+git push -u origin master
 ```
 
   6. Update `package.json`.
