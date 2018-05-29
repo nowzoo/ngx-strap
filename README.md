@@ -1,5 +1,25 @@
 # AngularLibraryStarter
 
+This is a Angular Library starter built with [Angular CLI](https://github.com/angular/angular-cli)
+with some useful changes meant to make it easier to develop both a library and a GitHub hosted demo site
+simultaneously.
+
+- The default app in `src/app` is the demo site. It is built to `docs` - making it easy to publish on Github.
+- A library `my-test-library` has been created in `projects/my-test-library`.
+- Wallaby.js has been set up to test both the demo app and the library.
+- The scripts `buildLib` and `buildDemo` have been added to `package.json`.
+
+## Quick Start
+
+  1. Pick a name for your library. Make sure it does not yet exist on NPM. Changing library names later is not fun.
+  2. Clone this repo into `your-library-name`
+
+```bash
+git clone nowzoo/angular-library-starter your-library-name
+```
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
 
 ## Development server
