@@ -6,7 +6,7 @@ simultaneously.
 
 - The default app in `src/app` is the demo site. It is built to `docs` - making it easy to publish on Github.
 - A library `my-test-library` has been created in `projects/my-test-library`. You can remove this later.
-- Wallaby.js has been set up to test both the demo app and the library. (You don't have to use Wallaby, though.)
+- Wallaby has been set up to test both the demo app and the library. (You don't have to use Wallaby, though.)
 - The scripts `buildLib` and `buildDemo` have been added to `package.json`.
 
 ## Quick Start
@@ -30,13 +30,11 @@ npm i
 ng serve --open
 
 # Unit tests. The wallaby.js file is set up to test both the lib and the demo.
-# If you don't have wallaby...
-
+# Or, if you don't have wallaby...
 # run unit tests on the library with ng
 ng test my-test-library
-
 # run unit tests on the demo app with ng
-ng test my-test-library
+ng test 
 
 # build the library for production
 npm run buildLib
@@ -107,4 +105,19 @@ cd dist/your-library-name
 npm adduser
 # publish...
 npm publish
+```
+
+## Publishing the demo site
+
+  1. In your GitHub repo, go to Settings > GitHub Pages. Under source, choose 'master branch /docs folder'.
+  2. Build the demo app...
+
+```bash
+npm run buildDemo
+```
+  3. Commit and push.
+```bash
+git add -A
+git commit -m 'demo app changes'
+git push
 ```
