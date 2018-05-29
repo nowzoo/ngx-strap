@@ -1,6 +1,20 @@
 {
   "name": "angular-library-starter",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "Angular library starter with some useful changes meant to make it easier to simultaneously develop an Angular library and a GitHub-hosted demo site for that library.",
+  "keywords": [
+    "angular",
+    "library",
+    "starter",
+    "wallaby",
+    "cli",
+    "angular6"
+  ],
+  "homepage": "https://github.com/nowzoo/angular-library-starter#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nowzoo/angular-library-starter.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

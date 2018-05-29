@@ -1,8 +1,8 @@
 # AngularLibraryStarter
 
-This is a Angular Library starter built with [Angular CLI](https://github.com/angular/angular-cli)
-with some useful changes meant to make it easier to develop both a library and a GitHub-hosted demo site
-simultaneously.
+This is an Angular library starter built with [Angular CLI](https://github.com/angular/angular-cli).
+
+Included are some useful changes meant to make it easier to simultaneously develop an Angular library and a GitHub-hosted demo site for that library.
 
 - The default app in `src/app` is the demo site. It is built to `docs` - making it easy to publish on Github.
 - A library `my-test-library` has been created in `projects/my-test-library`. You can remove this later.
@@ -11,7 +11,7 @@ simultaneously.
 
 ## Quick Start
 
-  1. Pick a name for your library. Make sure it does not yet exist on NPM. Changing library names later is not fun.
+  1. **Important.** Pick a decent name for your library. Make sure it does not yet exist on NPM. Changing library names later is not fun. (From now on in the doc we'll call it `your-library-name`).
   2. Clone this repo into `your-library-name`.
 
 ```bash
@@ -47,7 +47,7 @@ npm run buildDemo
   5. Add a repo on GitHub with your library name. Then make it the remote:
 
 ```bash
-git remote remove origin https://github.com/nowzoo/angular-library-starter.git
+git remote remove origin
 git remote add origin git@github.com:your-id/your-library-name.git
 ```
 
