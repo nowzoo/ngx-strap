@@ -2,24 +2,16 @@ var wallabyWebpack = require('wallaby-webpack');
 var path = require('path');
 
 var compilerOptions = Object.assign(
-  require('./tsconfig.json').compilerOptions,
-  require('./src/tsconfig.spec.json').compilerOptions);
+  require('./tsconfig.wallaby.spec.json').compilerOptions);
 
 compilerOptions.module = 'CommonJs';
-
-// To include a project library LIBRARYNAME in tests
-// add entries in the places noted below 
 
 module.exports = function (wallaby) {
 
   var webpackPostprocessor = wallabyWebpack({
     entryPatterns: [
       'src/wallabyTest.js',
-      'src/**/*spec.js',
-
-      // for each project library add an entry...
-      // 'projects/LIBRARYNAME/src/lib/**/*spec.js'...
-      'projects/my-test-library/src/lib/**/*spec.js'
+      'src/**/*spec.js'
     ],
 
     module: {
@@ -39,11 +31,9 @@ module.exports = function (wallaby) {
     resolve: {
       extensions: ['.js', '.ts'],
       modules: [
-        path.join(wallaby.projectCacheDir, 'src/app'),
+        path.join(wallaby.projectCacheDir, 'src/lib'),
         path.join(wallaby.projectCacheDir, 'src'),
-        // for each project library add an entry...
-        // path.join(wallaby.projectCacheDir, 'projects/LIBRARYNAME/src/lib')
-        path.join(wallaby.projectCacheDir, 'projects/my-test-library/src/lib'),
+        path.join(wallaby.localProjectDir, '../../node_modules'),
         'node_modules'
       ]
     },
@@ -59,26 +49,12 @@ module.exports = function (wallaby) {
     files: [
       {pattern: 'src/**/*.+(ts|css|less|scss|sass|styl|html|json|svg)', load: false},
       {pattern: 'src/**/*.d.ts', ignore: true},
-      {pattern: 'src/**/*spec.ts', ignore: true},
-
-      // for each project library add these 3 entries...
-      //  {pattern: 'projects/LIBRARYNAME/src/lib/**/*.+(ts|css|less|scss|sass|styl|html|json|svg)', load: false},
-      //  {pattern: 'projects/LIBRARYNAME/src/lib/**/*.d.ts', ignore: true},
-      //  {pattern: 'projects/LIBRARYNAME/src/lib/**/*spec.ts', ignore: true}
-      {pattern: 'projects/my-test-library/src/lib/**/*.+(ts|css|less|scss|sass|styl|html|json|svg)', load: false},
-      {pattern: 'projects/my-test-library/src/lib/**/*.d.ts', ignore: true},
-      {pattern: 'projects/my-test-library/src/lib/**/*spec.ts', ignore: true}
+      {pattern: 'src/**/*spec.ts', ignore: true}
     ],
 
     tests: [
       {pattern: 'src/**/*spec.ts', load: false},
-      {pattern: 'src/**/*e2e-spec.ts', ignore: true},
-
-      // for each project library add these 2 entries...
-      //  {pattern: 'projects/LIBRARYNAME/src/lib/**/*spec.ts', load: false},
-      //  {pattern: 'projects/LIBRARYNAME/src/lib/**/*e2e-spec.ts', ignore: true}
-      {pattern: 'projects/my-test-library/src/lib/**/*spec.ts', load: false},
-      {pattern: 'projects/my-test-library/src/lib/**/*e2e-spec.ts', ignore: true}
+      {pattern: 'src/**/*e2e-spec.ts', ignore: true}
     ],
 
     testFramework: 'jasmine',
@@ -102,6 +78,7 @@ module.exports = function (wallaby) {
     setup: function () {
       window.__moduleBundler.loadTests();
     },
+    filesWithNoCoverageCalculated: ['src/*.ts', 'src/**/*.module.ts'],
 
     debug: true
   };

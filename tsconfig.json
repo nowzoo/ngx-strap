@@ -17,8 +17,11 @@
       "dom"
     ],
     "paths": {
-      "my-test-library": [
-        "dist/my-test-library"
+      "@nowzoo/ngx-library-starter": [
+        "dist/ngx-library-starter"
+      ],
+      "@nowzoo/ngx-library-starter/*": [
+        "dist/ngx-library-starter/*"
       ]
     }
   }
