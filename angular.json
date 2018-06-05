@@ -3,11 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "demo": {
+    "ngx-library-starter-demo": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "demo",
+      "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
           "styleext": "scss"
@@ -54,18 +54,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "demo:build"
+            "browserTarget": "ngx-library-starter-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "demo:build:production"
+              "browserTarget": "ngx-library-starter-demo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "demo:build"
+            "browserTarget": "ngx-library-starter-demo:build"
           }
         },
         "test": {
@@ -99,7 +99,7 @@
         }
       }
     },
-    "demo-e2e": {
+    "ngx-library-starter-demo-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -107,7 +107,12 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "demo:serve"
+            "devServerTarget": "ngx-library-starter-demo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ngx-library-starter-demo:serve:production"
+            }
           }
         },
         "lint": {
@@ -121,38 +126,78 @@
         }
       }
     },
-    "my-test-library": {
-      "root": "projects/my-test-library",
-      "sourceRoot": "projects/my-test-library/src",
+    "angular-library-starter": {
+      "root": "projects/angular-library-starter",
+      "sourceRoot": "projects/angular-library-starter/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/my-test-library/tsconfig.lib.json",
-            "project": "projects/my-test-library/ng-package.json"
+            "tsConfig": "projects/angular-library-starter/tsconfig.lib.json",
+            "project": "projects/angular-library-starter/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/my-test-library/ng-package.prod.json"
+              "project": "projects/angular-library-starter/ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/my-test-library/src/test.ts",
-            "tsConfig": "projects/my-test-library/tsconfig.spec.json",
-            "karmaConfig": "projects/my-test-library/karma.conf.js"
+            "main": "projects/angular-library-starter/src/test.ts",
+            "tsConfig": "projects/angular-library-starter/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-library-starter/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/my-test-library/tsconfig.lib.json",
-              "projects/my-test-library/tsconfig.spec.json"
+              "projects/angular-library-starter/tsconfig.lib.json",
+              "projects/angular-library-starter/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-library-starter": {
+      "root": "projects/ngx-library-starter",
+      "sourceRoot": "projects/ngx-library-starter/src",
+      "projectType": "library",
+      "prefix": "ngx-library",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-library-starter/tsconfig.lib.json",
+            "project": "projects/ngx-library-starter/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngx-library-starter/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-library-starter/src/test.ts",
+            "tsConfig": "projects/ngx-library-starter/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-library-starter/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-library-starter/tsconfig.lib.json",
+              "projects/ngx-library-starter/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -162,5 +207,5 @@
       }
     }
   },
-  "defaultProject": "demo"
+  "defaultProject": "ngx-library-starter-demo"
 }
