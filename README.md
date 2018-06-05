@@ -1,27 +1,125 @@
 # AngularLibraryStarter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
+This is an Angular library starter built with [Angular CLI](https://github.com/angular/angular-cli).
 
-## Development server
+Included are some useful changes meant to make it easier to simultaneously develop an Angular library and a GitHub-hosted demo site for that library.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- The default app in `src/app` is the demo site. It is built to `docs` - making it easy to publish on Github.
+- A library `my-test-library` has been created in `projects/my-test-library`. You can remove this later.
+- Wallaby has been set up to test both the demo app and the library. (You don't have to use Wallaby, though.)
+- The scripts `buildLib` and `buildDemo` have been added to `package.json`.
 
-## Code scaffolding
+## Quick Start
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  1. **Important.** Pick a decent name for your library. Make sure it does not yet exist on NPM. Changing library names later is not fun. (From now on in the doc we'll call it `your-library-name`).
+  2. Clone this repo into `your-library-name`.
 
-## Build
+```bash
+git clone https://github.com/nowzoo/angular-library-starter.git your-library-name
+cd your-library-name
+```
+  3. Install the dependencies.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```bash
+npm i
+```
+  4. (Optional.) Make sure everything works as is. Some things you can do...
 
-## Running unit tests
+```bash
+# run the demo app locally
+ng serve --open
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Unit tests. The wallaby.js file is set up to test both the lib and the demo.
+# Or, if you don't have wallaby...
+# run unit tests on the library with ng
+ng test my-test-library
+# run unit tests on the demo app with ng
+ng test
 
-## Running end-to-end tests
+# build the library for production
+npm run buildLib
+# will be built to dist/my-test-library
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+# build the demo app for production
+npm run buildDemo
+# will be built to docs
+```
+  5. Add a repo on GitHub with your library name. Then make it the remote:
 
-## Further help
+```bash
+git remote remove origin
+git remote add origin git@github.com:your-id/your-library-name.git
+git push -u origin master
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  6. Update `package.json`.
+      - Update the name field to your library name.
+      - Update the repository entry, and update keywords and description to reflect what your library will do.
+      - Update the `buildLib` script. Replace `my-test-library` in  `"buildLib": "ng build my-test-library --prod"` to your library name.
+      -  Update the `buildDemo` script. Replace `angular-library-starter` in `--base-href /angular-library-starter/` with your library name. (The `--base-href` entry tells Angular that your demo site will live in a subdirectory, e.g. `your-id.github.io/your-library-name`.)
+
+  7. Update or replace LICENSE and README.md (this file).
+
+  8. Create your **real** library with the CLI.
+
+```bash
+ng g library your-library-name
+```
+
+  9. Update `projects/your-library-name/package.json` with:
+      - the `name`, `description`, `keywords`, `repository`, and `license` fields should be the same as what appears in the main `package.json`
+      - the library dependencies should probably all be in `peerDependencies`
+  10. If you use Wallaby, update `wallaby.js`. Replace all instances of `my-test-library` with your library name.
+  11. Make something great.
+
+## Publishing the library
+
+  1. Commit.
+```bash
+git add -A
+git commit -m 'ready to publish'
+```
+  2. Bump the **library** version using NPM. You want to do this for the library `package.json`, not the main one, so make sure you are in the library directory.
+```bash
+# make sure you are in the library directory
+cd projects/your-library-name
+npm version 1.0.0 # or major | minor | patch
+# cd back to root
+cd ../..
+```
+  3. Build the library...
+```bash
+npm run buildLib
+# or ng build your-library-name --prod
+```
+
+  4. Copy the license and readme into the dist.
+```
+cp LICENSE dist/your-library-name
+cp README.md dist/your-library-name
+```
+
+  5. Publish...
+```bash
+# change to dist/your-library-name
+cd dist/your-library-name
+# if you are not signed into NPM do...
+npm adduser
+# publish...
+npm publish
+```
+
+## Publishing the demo site
+
+  1. In your GitHub repo, go to Settings > GitHub Pages. Under source, choose 'master branch /docs folder'.
+  2. Build the demo app...
+
+```bash
+npm run buildDemo
+```
+  3. Commit and push.
+```bash
+git add -A
+git commit -m 'demo app changes'
+git push
+```
