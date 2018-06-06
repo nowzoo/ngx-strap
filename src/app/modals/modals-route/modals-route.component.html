@@ -1,0 +1,32 @@
+<h1 class="display-1">Modals</h1>
+<hr>
+<p class="lead">
+  A simple directive to apply to an <code>ng-template</code> containing some Bootstrap modal markup.
+</p>
+<h2 class="display-4">API</h2>
+<h5>
+  Module: <code>ModalModule</code>
+</h5>
+<p><code>import {{ '{' }} ModalModule {{ '}' }} from '@nowzoo/ngx-strap';</code></p>
+
+<h5>
+  Directive: <code>ModalDirective</code>
+</h5>
+<p><code>selector: '[ngxStrapModal]', exportAs: 'ngxStrapModal'</code></p>
+<h6>Inputs</h6>
+<p class="text-muted">none</p>
+<h6>Method</h6>
+<p><code>show(): IModalInstance</code></p>
+
+<h5>
+  Interface: <code>IModalInstance</code>
+</h5>
+<p><code>events: EventEmitter&lt;Event>;</code></p>
+
+
+<hr>
+
+<h2 class="display-4">Minimal Demo</h2>
+
+
+<app-minimal></app-minimal>

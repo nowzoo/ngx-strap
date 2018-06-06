@@ -17,11 +17,11 @@
       "dom"
     ],
     "paths": {
-      "@nowzoo/ngx-library-starter": [
-        "dist/ngx-library-starter"
+      "@nowzoo/ngx-strap": [
+        "dist/ngx-strap"
       ],
-      "@nowzoo/ngx-library-starter/*": [
-        "dist/ngx-library-starter/*"
+      "@nowzoo/ngx-strap/*": [
+        "dist/ngx-strap/*"
       ]
     }
   }

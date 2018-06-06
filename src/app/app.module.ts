@@ -1,15 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgxLibraryStarterModule } from '@nowzoo/ngx-library-starter';
-import { AppComponent } from './app.component';
+import { Routes, RouterModule } from '@angular/router';
 
+import { AppComponent } from './app.component';
+import { ModalModule } from '@nowzoo/ngx-strap';
+
+const routes: Routes = [
+  {path: 'modals', loadChildren: './modals/modals.module#ModalsModule'},
+  {path: '', loadChildren: './home/home.module#HomeModule'}
+];
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
     BrowserModule,
-    NgxLibraryStarterModule
+    RouterModule.forRoot(routes),
+    ModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

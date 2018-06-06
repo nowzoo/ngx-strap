@@ -27,9 +27,14 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/scss/bootstrap.scss",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -126,38 +131,38 @@
         }
       }
     },
-    "angular-library-starter": {
-      "root": "projects/angular-library-starter",
-      "sourceRoot": "projects/angular-library-starter/src",
+    "ngx-bootstrap": {
+      "root": "projects/ngx-bootstrap",
+      "sourceRoot": "projects/ngx-bootstrap/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/angular-library-starter/tsconfig.lib.json",
-            "project": "projects/angular-library-starter/ng-package.json"
+            "tsConfig": "projects/ngx-bootstrap/tsconfig.lib.json",
+            "project": "projects/ngx-bootstrap/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/angular-library-starter/ng-package.prod.json"
+              "project": "projects/ngx-bootstrap/ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/angular-library-starter/src/test.ts",
-            "tsConfig": "projects/angular-library-starter/tsconfig.spec.json",
-            "karmaConfig": "projects/angular-library-starter/karma.conf.js"
+            "main": "projects/ngx-bootstrap/src/test.ts",
+            "tsConfig": "projects/ngx-bootstrap/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-bootstrap/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/angular-library-starter/tsconfig.lib.json",
-              "projects/angular-library-starter/tsconfig.spec.json"
+              "projects/ngx-bootstrap/tsconfig.lib.json",
+              "projects/ngx-bootstrap/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -166,38 +171,38 @@
         }
       }
     },
-    "ngx-library-starter": {
-      "root": "projects/ngx-library-starter",
-      "sourceRoot": "projects/ngx-library-starter/src",
+    "ngx-strap": {
+      "root": "projects/ngx-strap",
+      "sourceRoot": "projects/ngx-strap/src",
       "projectType": "library",
-      "prefix": "ngx-library",
+      "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/ngx-library-starter/tsconfig.lib.json",
-            "project": "projects/ngx-library-starter/ng-package.json"
+            "tsConfig": "projects/ngx-strap/tsconfig.lib.json",
+            "project": "projects/ngx-strap/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-library-starter/ng-package.prod.json"
+              "project": "projects/ngx-strap/ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-library-starter/src/test.ts",
-            "tsConfig": "projects/ngx-library-starter/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-library-starter/karma.conf.js"
+            "main": "projects/ngx-strap/src/test.ts",
+            "tsConfig": "projects/ngx-strap/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-strap/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ngx-library-starter/tsconfig.lib.json",
-              "projects/ngx-library-starter/tsconfig.spec.json"
+              "projects/ngx-strap/tsconfig.lib.json",
+              "projects/ngx-strap/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
