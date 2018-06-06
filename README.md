@@ -49,9 +49,9 @@ cp projects/ngx-library-starter/src/wallabyTest.ts projects/your-lib/src/
 
 #### Exclude `wallabyTest.ts` from `tsconfig.lib.json`
 In `projects/your-lib/tsconfig.lib.json`...
-```json
+```js
 {
-  ... other stuff...
+  // ... other stuff...
   "exclude": [
     "src/test.ts",
     "src/wallabyTest.ts",
