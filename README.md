@@ -34,8 +34,57 @@ ng g library your-lib --prefix your-lib
 - edit `tsconfig.json` in the root directory. In `compilerOptions.paths` change the keys `your-lib` and `your-lib/*` to `@your-org/your-lib` and `@your-org/your-lib/*`. Don't change the values.
 
 ### Optional step: add Wallaby support for the new library
+
+#### Copy the library Wallaby files to the new library...
+```bash
+# the wallaby.js
+cp projects/ngx-library-starter/wallaby.js projects/your-lib/
+
+# the wallaby-specific tsconfig for the library...
+cp projects/ngx-library-starter/tsconfig.wallaby.spec.json projects/your-lib/
+
+# wallabyTest.ts
+cp projects/ngx-library-starter/src/wallabyTest.ts projects/your-lib/src/
+```
+
+#### Exclude `wallabyTest.ts` from `tsconfig.lib.json`
+In `projects/your-lib/tsconfig.lib.json`...
+```json
+{
+  ... other stuff...
+  "exclude": [
+    "src/test.ts",
+    "src/wallabyTest.ts",
+    "**/*.spec.ts"
+  ]
+}
+
+```
 - copy `projects/ngx-library-starter/wallaby.js` to `projects/your-lib/wallaby.js`
 - copy `projects/ngx-library-starter/tsconfig.wallaby.spec.json` to `projects/your-lib/tsconfig.wallaby.spec.json`
 - copy `projects/ngx-library-starter/src/wallabyTest.ts` to `projects/your-lib/src/wallabyTest.ts`
 - edit `projects/your-lib/tsconfig.lib.json`. Add `src/wallabyTest.ts` to `exclude`.
+
+
+#### Add an alias for the new library to the main `wallaby.js`
+If your demo app uses the library, you may want to add an alias in the main `wallaby.js` config. In the config you pass to `wallabyWebpack()`, add an entry to `resolve.alias`:
+
+```js
+var webpackPostprocessor = wallabyWebpack({
+  // other stuff...
+  resolve: {
+    //other stuff...
+    alias: {
+      '@nowzoo/ngx-library-starter': path.resolve(wallaby.localProjectDir,  'dist', 'ngx-library-starter'),
+      // add...
+      'your-lib': path.resolve(wallaby.localProjectDir, 'dist', 'your-lib'),
+      // or with an NPM org...
+      '@your-org/your-lib': path.resolve(wallaby.localProjectDir, 'dist', 'your-lib')
+    }
+    // other stuff
+  }
+});
+
+```
+
 - edit the main `wallaby.js` config in the root. Add an alias for the new library in `resolve.alias`: `'your-lib': path.resolve(wallaby.localProjectDir, 'dist/your-lib')`. If you have a namespace, prepend it to the key: `'@your-org/your-lib': path.resolve(wallaby.localProjectDir, 'dist/your-lib')`.

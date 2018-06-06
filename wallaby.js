@@ -5,14 +5,6 @@ var compilerOptions = require('./src/tsconfig.wallaby.spec.json').compilerOption
 
 compilerOptions.module = 'CommonJs';
 
-const libs = require('./wallaby.libs.json');
-const libraryAliases = {};
-libs.forEach(libName => {
-  const parts = libName.split('/');
-  const last = parts.pop();
-  libraryAliases[libName] = path.resolve(__dirname,  'dist', last);
-})
-
 module.exports = function (wallaby) {
 
   var webpackPostprocessor = wallabyWebpack({
@@ -42,7 +34,9 @@ module.exports = function (wallaby) {
         path.join(wallaby.projectCacheDir, 'src'),
         'node_modules'
       ],
-      alias: libraryAliases
+      alias: {
+        '@nowzoo/ngx-library-starter': path.resolve(wallaby.localProjectDir,  'dist', 'ngx-library-starter')
+      }
     },
     node: {
       fs: 'empty',
