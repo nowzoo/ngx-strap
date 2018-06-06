@@ -30,8 +30,47 @@ Generate...
 ng g library your-lib --prefix your-lib
 ```
 ### Optional step: add your NPM org namespace ...
-- edit `projects/your-lib/package.json`. Add the namespace to the `name` field: `@your-org/your-lib`.
-- edit `tsconfig.json` in the root directory. In `compilerOptions.paths` change the keys `your-lib` and `your-lib/*` to `@your-org/your-lib` and `@your-org/your-lib/*`. Don't change the values.
+Edit `projects/your-lib/package.json`. Add the namespace to the `name` field:
+```json
+{
+  "name": "@your-org/your-lib",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+  }
+}
+```
+Edit `tsconfig.json` in the root directory. Under `compilerOptions.paths` change the keys from...
+
+```js
+{
+
+  "paths": {
+    "your-lib": [
+      "dist/your-lib"
+    ],
+    "your-lib/*": [
+      "dist/your-lib/*"
+    ]
+  }
+}
+```
+...to...
+```js
+{
+
+  "paths": {
+    "@your-org/your-lib": [
+      "dist/your-lib"
+    ],
+    "@your-org/your-lib/*": [
+      "dist/your-lib/*"
+    ]
+  }
+}
+```
+
 
 ### Optional step: add Wallaby support for the new library
 
@@ -86,5 +125,3 @@ var webpackPostprocessor = wallabyWebpack({
 });
 
 ```
-
-- edit the main `wallaby.js` config in the root. Add an alias for the new library in `resolve.alias`: `'your-lib': path.resolve(wallaby.localProjectDir, 'dist/your-lib')`. If you have a namespace, prepend it to the key: `'@your-org/your-lib': path.resolve(wallaby.localProjectDir, 'dist/your-lib')`.
