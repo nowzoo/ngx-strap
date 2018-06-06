@@ -125,3 +125,74 @@ var webpackPostprocessor = wallabyWebpack({
 });
 
 ```
+
+## Running unit tests for the library
+
+Angular CLI:
+```bash
+ng test your-lib
+```
+Wallaby: select `projects/your-lib/wallaby.js` as the config file.
+
+## Running unit tests for the demo app
+When unit testing the demo app remember to build the latest version of your library first:
+
+```bash
+ng build your-lib --prod
+```
+
+Angular CLI:
+```bash
+ng test your-lib
+```
+Wallaby: just select `wallaby.js` in the root directory as the config file.
+
+## Publishing to NPM
+
+Edit `projects/your-lib/package.json`.
+ - Update the version.
+ - Provide a description, keywords, etc.
+
+Build the library...
+```bash
+ng build your-lib --prod
+```
+Copy `LICENSE` and `README.md` into the distribution.
+```bash
+cp LICENSE README.md dist/your-lib
+```
+
+Publish...
+```bash
+# change into the distribution directory...
+cd dist/your-lib
+
+# publish...
+npm publish --access public
+
+# change back...
+cd ../..
+```
+
+## Publishing the demo app to GitHub pages
+
+If you haven't done so already, create a repo on GitHub and update the remotes...
+
+```bash
+git remote remove origin
+git remote add origin git@github.com:you/your-lib.git
+```
+
+Build the demo app. Make sure to set the base href to whatever the name of your repo is.
+```bash
+ng build --aot --prod --base-href /your-lib/
+```
+
+This puts the demo app into the `docs` directory, ready for publishing on GitHub.
+```bash
+git add -A
+git commit -m 'demo app built'
+git push origin master
+```
+
+On GitHub, go to the repo's settings page. Under GitHub Pages, set the source to be **Master branch docs folder**.
