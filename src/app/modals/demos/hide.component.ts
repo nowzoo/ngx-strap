@@ -1,7 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ModalDirective, IModalInstance } from '@nowzoo/ngx-strap';
 @Component({
-  selector: 'app-promises',
+  selector: 'app-hide',
   template: `
   <ng-template ngxStrapModal #modal="ngxStrapModal">
     <div class="modal fade" [attr.id]="modalId"
@@ -16,34 +17,43 @@ import { ModalDirective, IModalInstance } from '@nowzoo/ngx-strap';
             </button>
           </div>
           <div class="modal-body">
-            <p>{{message}}</p>
+            <label>
+              <input [formControl]="fc" type="checkbox">
+              I know what I'm doing. Go ahead and close the modal.
+            </label>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success" (click)="submit()">Submit</button>
           </div>
         </div>
       </div>
     </div>
   </ng-template>
-
-
   <button type="button" class="btn btn-primary" (click)="showModal()">Show Modal</button>
-  <small class="text-muted d-inline-block ml-1">{{message}}</small>
   `,
   styles: []
 })
-export class PromisesComponent {
+export class HideComponent implements OnInit {
   @ViewChild('modal') modal: ModalDirective;
-  modalId = 'modal-promises-demo';
-  title = 'Promises, promises';
-  message = 'Not yet shown.';
+  modalId = 'modal-show-demo';
+  title = 'IModalInstance.hide()';
+  fc: FormControl;
+  modalInstance: IModalInstance;
   constructor() { }
 
-  showModal() {
-    const instance: IModalInstance = this.modal.show();
-    instance.shown.then(() => this.message = 'Shown.');
-    instance.hidden.then(() => this.message = 'Hidden.');
+  ngOnInit() {
+    this.fc = new FormControl(false);
   }
 
+  showModal() {
+    this.modalInstance = this.modal.show();
+    this.fc.setValue(false);
+  }
+
+  submit() {
+    if (this.fc.value === true) {
+      this.modalInstance.hide();
+    }
+  }
 
 }

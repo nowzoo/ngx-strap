@@ -12,34 +12,110 @@
 </p>
 <hr>
 
+<section class="demo-section">
+  <h2>A minimal demo</h2>
+  <p>
+    There are no silly options or inputs. Control the modal behavior in your markup with
+    native Bootstrap modal classes and <code>data-</code>
+    attributes.
+  </p>
+  <div class="d-flex align-items-center">
+    <div class="mr-4 mb-2">
+      <app-minimal></app-minimal>
+    </div>
+    <div class="mb-2">
+      <app-repo-link path="/blob/master/src/app/modals/demos/minimal.component.ts">Demo Code</app-repo-link>
+    </div>
+  </div>
+</section>
+<section class="demo-section">
+  <h2>show()</h2>
+  <p>
+    The  directive's <code>show()</code> method returns an instance of
+    <app-repo-link path="/blob/master/projects/ngx-strap/src/lib/modal/modal-instance.interface.ts"><code>IModalInstance</code></app-repo-link>,
+    which features some fascinating properties and methods.
+  </p>
+  <div class="d-flex align-items-center">
+    <div class="mr-4 mb-2">
+      <app-show></app-show>
+    </div>
+    <div class="mb-2">
+      <app-repo-link path="/blob/master/src/app/modals/demos/show.component.ts">Demo Code</app-repo-link>
+    </div>
+  </div>
+</section>
+<section class="demo-section">
+  <h2>Events</h2>
+  <p>
+    You can subscribe to the native Bootstrap modal events.
+  </p>
+  <div class="d-flex align-items-center">
+    <div class="mr-4 mb-2">
+      <app-events></app-events>
+    </div>
+    <div class="mb-2">
+      <app-repo-link path="/blob/master/src/app/modals/demos/promises.component.ts">Demo Code</app-repo-link>
+    </div>
+  </div>
+</section>
+<section class="demo-section">
+  <h2>Promises</h2>
+  <p>
+    The <code>shown</code> and <code>hidden</code> promises.
+  </p>
+  <div class="d-flex align-items-center">
+    <div class="mr-4 mb-2">
+      <app-promises></app-promises>
+    </div>
+    <div class="mb-2">
+      <app-repo-link path="/blob/master/src/app/modals/demos/promises.component.ts">Demo Code</app-repo-link>
+    </div>
+  </div>
+</section>
+<section class="demo-section">
+  <h2>instance.hide()</h2>
+  <p>
+    You can hide the modal programmatically.
+  </p>
+  <div class="d-flex align-items-center">
+    <div class="mr-4 mb-2">
+      <app-hide></app-hide>
+    </div>
+    <div class="mb-2">
+      <app-repo-link path="/blob/master/src/app/modals/demos/hide.component.ts">Demo Code</app-repo-link>
+    </div>
+  </div>
+</section>
+<section class="demo-section">
+  <h2>Handle content changes</h2>
+  <p>
+  Readjust the modal’s position if the
+    height of a modal changes while it is
+    open (i.e. in case a scrollbar appears).
+    <a href="http://getbootstrap.com/docs/4.1/components/modal/#modalhandleupdate"
+      target="boostrap">Bootstrap docs...</a>
+  </p>
+  <div class="d-flex align-items-center">
+    <div class="mr-4 mb-2">
+      <app-handle-update></app-handle-update>
+    </div>
+    <div class="mb-2">
+      <app-repo-link path="/blob/master/src/app/modals/demos/handle-update.component.ts">Demo Code</app-repo-link>
+    </div>
+  </div>
+</section>
 
-<h2 class="display-4">Minimal Demo</h2>
-<p>
-  There are no options or inputs. Control the modal behavior with native Bootstrap modal classes and <code>data-</code>
-  attributes, in your markup. Use the directive's <code>show()</code> method to
-  show the contents of an <code>ng-template</code> as a modal.
-</p>
-<div class="d-flex align-items-center">
-  <div class="mr-4 mb-2">
-    <app-minimal></app-minimal>
+<section class="demo-section">
+  <h2>Modals go away</h2>
+  <p>
+    Modals go away automatically and gracefully when the underlying directive is destroyed.
+  </p>
+  <div class="d-flex align-items-center">
+    <div class="mr-4 mb-2">
+      <app-route-change></app-route-change>
+    </div>
+    <div class="mb-2">
+      <app-repo-link path="/blob/master/src/app/modals/demos/route-change.component.ts">Demo Code</app-repo-link>
+    </div>
   </div>
-  <div class="mb-2">
-    <app-repo-link path="/blob/master/src/app/modals/demos/minimal.component.ts">Demo Code</app-repo-link>
-  </div>
-</div>
-<hr>
-
-<h2 class="display-4">Promises</h2>
-<p>
-  The <code>show()</code> method returns an instance of
-  <app-repo-link path="/blob/master/projects/ngx-strap/src/lib/modal/modal-instance.interface.ts"><code>IModalInstance</code></app-repo-link>,
-  with <code>shown</code> and <code>hidden</code> promises.
-</p>
-<div class="d-flex align-items-center">
-  <div class="mr-4 mb-2">
-    <app-promises></app-promises>
-  </div>
-  <div class="mb-2">
-    <app-repo-link path="/blob/master/src/app/modals/demos/promises.component.ts">Demo Code</app-repo-link>
-  </div>
-</div>
+</section>

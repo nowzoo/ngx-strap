@@ -1,7 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { ModalDirective, IModalInstance } from '@nowzoo/ngx-strap';
 @Component({
-  selector: 'app-promises',
+  selector: 'app-route-change',
   template: `
   <ng-template ngxStrapModal #modal="ngxStrapModal">
     <div class="modal fade" [attr.id]="modalId"
@@ -16,34 +16,22 @@ import { ModalDirective, IModalInstance } from '@nowzoo/ngx-strap';
             </button>
           </div>
           <div class="modal-body">
-            <p>{{message}}</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            Modals go away automatically and gracefully when the underlying directive is destroyed,
+            for example, when a
+            <a routerLink="/modals/another">link in the modal
+            triggers a route change</a>.
           </div>
         </div>
       </div>
     </div>
   </ng-template>
-
-
-  <button type="button" class="btn btn-primary" (click)="showModal()">Show Modal</button>
-  <small class="text-muted d-inline-block ml-1">{{message}}</small>
+  <button type="button" class="btn btn-primary" (click)="modal.show()">Show Modal</button>
   `,
   styles: []
 })
-export class PromisesComponent {
-  @ViewChild('modal') modal: ModalDirective;
-  modalId = 'modal-promises-demo';
-  title = 'Promises, promises';
-  message = 'Not yet shown.';
+export class RouteChangeComponent  {
+  modalId = 'modal-route-change-demo';
+  title = 'Modals Go Away';
   constructor() { }
-
-  showModal() {
-    const instance: IModalInstance = this.modal.show();
-    instance.shown.then(() => this.message = 'Shown.');
-    instance.hidden.then(() => this.message = 'Hidden.');
-  }
-
 
 }

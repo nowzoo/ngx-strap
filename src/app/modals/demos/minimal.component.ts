@@ -30,7 +30,7 @@ import { Component } from '@angular/core';
   `
 })
 export class MinimalComponent  {
-  modalId = 'minimal-modal-demo';
+  modalId = 'modal-minimal-demo';
   title = 'Hi!';
   message = 'I\'m a modal';
 }

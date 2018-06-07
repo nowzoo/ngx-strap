@@ -1,4 +1,5 @@
-import { Directive, OnInit, TemplateRef, EmbeddedViewRef, ApplicationRef, Renderer2 , EventEmitter} from '@angular/core';
+import { Directive, OnDestroy,
+  TemplateRef, EmbeddedViewRef, ApplicationRef, Renderer2 , EventEmitter} from '@angular/core';
 import { filter } from 'rxjs/operators';
 import { IModalInstance } from './modal-instance.interface';
 
@@ -7,7 +8,7 @@ declare const jQuery: any;
   selector: '[ngxStrapModal]',
   exportAs: 'ngxStrapModal'
 })
-export class ModalDirective {
+export class ModalDirective implements OnDestroy {
 
   modalElement: HTMLElement = null;
 
@@ -32,6 +33,7 @@ export class ModalDirective {
       $modalElement.modal('dispose');
       this.appRef.detachView(viewRef);
       viewRef.destroy();
+      this.modalElement = null;
     });
     const shown: Promise<void> = new Promise(resolve => {
       const sub = events.pipe(filter(e => 'shown' === e.type))
@@ -61,6 +63,12 @@ export class ModalDirective {
       hide: hide,
       handleUpdate: handleUpdate
     };
+  }
+
+  ngOnDestroy() {
+    if (this.modalElement) {
+      jQuery(this.modalElement).modal('hide');
+    }
   }
 
 }

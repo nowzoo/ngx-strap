@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ModalDirective, IModalInstance } from '@nowzoo/ngx-strap';
 @Component({
-  selector: 'app-promises',
+  selector: 'app-events',
   template: `
   <ng-template ngxStrapModal #modal="ngxStrapModal">
     <div class="modal fade" [attr.id]="modalId"
@@ -16,7 +16,7 @@ import { ModalDirective, IModalInstance } from '@nowzoo/ngx-strap';
             </button>
           </div>
           <div class="modal-body">
-            <p>{{message}}</p>
+            Events thus far: {{events | json}}
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -25,25 +25,23 @@ import { ModalDirective, IModalInstance } from '@nowzoo/ngx-strap';
       </div>
     </div>
   </ng-template>
-
-
   <button type="button" class="btn btn-primary" (click)="showModal()">Show Modal</button>
-  <small class="text-muted d-inline-block ml-1">{{message}}</small>
-  `,
-  styles: []
+  <small class="text-muted d-inline-block ml-1">Events thus far: {{events | json}}</small>
+  `
 })
-export class PromisesComponent {
+export class EventsComponent {
+
   @ViewChild('modal') modal: ModalDirective;
-  modalId = 'modal-promises-demo';
-  title = 'Promises, promises';
-  message = 'Not yet shown.';
+  modalId = 'modal-events-demo';
+  title = 'IModalInstance.events';
+
+  events: string[] = [];
   constructor() { }
 
   showModal() {
-    const instance: IModalInstance = this.modal.show();
-    instance.shown.then(() => this.message = 'Shown.');
-    instance.hidden.then(() => this.message = 'Hidden.');
+    const instance = this.modal.show();
+    this.events = [];
+    instance.events.subscribe(e => this.events.push(e.type));
   }
-
 
 }

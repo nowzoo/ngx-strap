@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ModalDirective, IModalInstance } from '@nowzoo/ngx-strap';
 @Component({
-  selector: 'app-promises',
+  selector: 'app-show',
   template: `
   <ng-template ngxStrapModal #modal="ngxStrapModal">
     <div class="modal fade" [attr.id]="modalId"
@@ -16,7 +16,7 @@ import { ModalDirective, IModalInstance } from '@nowzoo/ngx-strap';
             </button>
           </div>
           <div class="modal-body">
-            <p>{{message}}</p>
+            <pre>{{props}}</pre>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -25,24 +25,25 @@ import { ModalDirective, IModalInstance } from '@nowzoo/ngx-strap';
       </div>
     </div>
   </ng-template>
-
-
   <button type="button" class="btn btn-primary" (click)="showModal()">Show Modal</button>
-  <small class="text-muted d-inline-block ml-1">{{message}}</small>
   `,
   styles: []
 })
-export class PromisesComponent {
+export class ShowComponent {
   @ViewChild('modal') modal: ModalDirective;
-  modalId = 'modal-promises-demo';
-  title = 'Promises, promises';
-  message = 'Not yet shown.';
+  modalId = 'modal-show-demo';
+  title = 'show() returns IModalInstance';
+  props = `export interface IModalInstance {
+  events: EventEmitter<Event>;
+  shown: Promise<void>;
+  hidden: Promise<void>;
+  hide: () => void;
+  handleUpdate: () => void;
+}`;
   constructor() { }
 
   showModal() {
-    const instance: IModalInstance = this.modal.show();
-    instance.shown.then(() => this.message = 'Shown.');
-    instance.hidden.then(() => this.message = 'Hidden.');
+    const instance = this.modal.show();
   }
 
 
