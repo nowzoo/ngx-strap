@@ -2,31 +2,44 @@
 <hr>
 <p class="lead">
   A simple directive to apply to an <code>ng-template</code> containing some Bootstrap modal markup.
+
 </p>
-<h2 class="display-4">API</h2>
-<h5>
-  Module: <code>ModalModule</code>
-</h5>
-<p><code>import {{ '{' }} ModalModule {{ '}' }} from '@nowzoo/ngx-strap';</code></p>
 
-<h5>
-  Directive: <code>ModalDirective</code>
-</h5>
-<p><code>selector: '[ngxStrapModal]', exportAs: 'ngxStrapModal'</code></p>
-<h6>Inputs</h6>
-<p class="text-muted">none</p>
-<h6>Method</h6>
-<p><code>show(): IModalInstance</code></p>
-
-<h5>
-  Interface: <code>IModalInstance</code>
-</h5>
-<p><code>events: EventEmitter&lt;Event>;</code></p>
-
-
+<p>
+  <app-repo-link path="#modals">Docs</app-repo-link>
+  |
+  <app-repo-link path="/tree/master/projects/ngx-strap/src/lib/modal">Library Code</app-repo-link>
+</p>
 <hr>
 
+
 <h2 class="display-4">Minimal Demo</h2>
+<p>
+  There are no options or inputs. Control the modal behavior with native Bootstrap modal classes and <code>data-</code>
+  attributes, in your markup. Use the directive's <code>show()</code> method to
+  show the contents of an <code>ng-template</code> as a modal.
+</p>
+<div class="d-flex align-items-center">
+  <div class="mr-4 mb-2">
+    <app-minimal></app-minimal>
+  </div>
+  <div class="mb-2">
+    <app-repo-link path="/blob/master/src/app/modals/demos/minimal.component.ts">Demo Code</app-repo-link>
+  </div>
+</div>
+<hr>
 
-
-<app-minimal></app-minimal>
+<h2 class="display-4">Promises</h2>
+<p>
+  The <code>show()</code> method returns an instance of
+  <app-repo-link path="/blob/master/projects/ngx-strap/src/lib/modal/modal-instance.interface.ts"><code>IModalInstance</code></app-repo-link>,
+  with <code>shown</code> and <code>hidden</code> promises.
+</p>
+<div class="d-flex align-items-center">
+  <div class="mr-4 mb-2">
+    <app-promises></app-promises>
+  </div>
+  <div class="mb-2">
+    <app-repo-link path="/blob/master/src/app/modals/demos/promises.component.ts">Demo Code</app-repo-link>
+  </div>
+</div>
