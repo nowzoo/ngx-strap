@@ -131,46 +131,7 @@
         }
       }
     },
-    "ngx-bootstrap": {
-      "root": "projects/ngx-bootstrap",
-      "sourceRoot": "projects/ngx-bootstrap/src",
-      "projectType": "library",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/ngx-bootstrap/tsconfig.lib.json",
-            "project": "projects/ngx-bootstrap/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "projects/ngx-bootstrap/ng-package.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/ngx-bootstrap/src/test.ts",
-            "tsConfig": "projects/ngx-bootstrap/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-bootstrap/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ngx-bootstrap/tsconfig.lib.json",
-              "projects/ngx-bootstrap/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
+    
     "ngx-strap": {
       "root": "projects/ngx-strap",
       "sourceRoot": "projects/ngx-strap/src",

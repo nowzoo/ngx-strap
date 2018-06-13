@@ -28,7 +28,7 @@ import { ModalDirective, IModalInstance } from '@nowzoo/ngx-strap';
               </p>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-success" (click)="submit()">Submit</button>
+            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxMdModule } from 'ngx-md';
+import { NgxHighlightJsModule } from '@nowzoo/ngx-highlight-js';
+
 import { ModalModule } from '@nowzoo/ngx-strap';
 
 import { SharedModule } from '../shared/shared.module';
@@ -24,6 +27,8 @@ import { RouteChangeComponent } from './demos/route-change.component';
     ModalModule,
     SharedModule,
     ModalsRoutingModule,
+    NgxMdModule,
+    NgxHighlightJsModule
 
   ],
   declarations: [
