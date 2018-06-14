@@ -59,7 +59,7 @@ const tooltipOptions: NgxStrapTooltipOptions = {animation: false};
 export class MyComponent  { }
 ```
 
-And, finally, you can pass in options to the directive, using the `options` input or using `data-` attributes:
+And, finally, you can pass in options to the directive, using the `options` input or `data-` attributes:
 
 ```html
 <!-- options input... -->
