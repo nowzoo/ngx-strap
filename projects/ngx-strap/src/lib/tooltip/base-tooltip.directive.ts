@@ -2,17 +2,18 @@ import { Input, OnInit, OnDestroy,
   ElementRef, TemplateRef, EmbeddedViewRef, ViewContainerRef,
   EventEmitter } from '@angular/core';
 import { filter } from 'rxjs/operators';
-import { NgxStrapTooltipOptions, TooltipOptions } from './tooltip-options';
+import { NgxStrapTooltipOptions } from './tooltip-options';
 declare const jQuery: any;
 
 export abstract class BaseTooltipDirective implements OnInit, OnDestroy {
-  @Input() options: any = null;
+  @Input() options: NgxStrapTooltipOptions = null;
   protected $el: any;
   protected bsTooltipInstance: any = null;
   events: EventEmitter<Event>;
   state: 'hidden' | 'hiding' | 'shown' | 'showing' = 'hidden';
   disabled = false;
   constructor(
+    protected tooltipOptions: NgxStrapTooltipOptions,
     protected elementRef: ElementRef
   ) {
   }

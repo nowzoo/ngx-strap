@@ -5,3 +5,14 @@
 
   }
 }
+
+
+.tooltip.my-custom-tooltip {
+  .tooltip-inner {
+    background-color: #666;
+  }
+  &.bs-tooltip-top .arrow::before, &.bs-tooltip-auto[x-placement^="top"] .arrow::before {
+    border-top-color: #666;
+  }
+
+}

@@ -24,7 +24,7 @@ describe('BaseTooltipDirective', () => {
     jQuery = window['jQuery'] = jasmine.createSpy().and.returnValue(jqEl);
     el =  document.createElement('span');
     elementRef = {nativeElement: el};
-    directive = new TooltipImpl(elementRef);
+    directive = new TooltipImpl({}, elementRef);
     directiveForTesting = directive;
     directive.ngOnInit();
   });

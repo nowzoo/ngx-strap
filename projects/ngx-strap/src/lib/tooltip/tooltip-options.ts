@@ -1,7 +1,5 @@
 import { InjectionToken } from '@angular/core';
-export interface TooltipOptions {
+export interface ITooltipOptions {
   [key: string]: any;
 }
-export const NgxStrapTooltipOptions = new InjectionToken<TooltipOptions>('default tooltip options', {
-  providedIn: 'root', factory: () => ({})
-});
+export class NgxStrapTooltipOptions implements ITooltipOptions {}

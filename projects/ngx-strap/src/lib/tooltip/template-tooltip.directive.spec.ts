@@ -34,7 +34,7 @@ describe('TemplateTooltipDirective', () => {
     jQuery = window['jQuery'] = jasmine.createSpy().and.returnValue(jqEl);
     el =  document.createElement('span');
     elementRef = {nativeElement: el};
-    directive = new TemplateTooltipDirective(elementRef, viewContainerRef);
+    directive = new TemplateTooltipDirective({}, elementRef, viewContainerRef);
     directiveForTesting = directive;
   });
   it('should create an instance', () => {

@@ -1,5 +1,6 @@
 import { Directive, ElementRef, OnInit, OnDestroy, OnChanges, Input, TemplateRef, ViewContainerRef, EmbeddedViewRef } from '@angular/core';
 import { BaseTooltipDirective } from './base-tooltip.directive';
+import { NgxStrapTooltipOptions } from './tooltip-options';
 
 declare const jQuery: any;
 @Directive({
@@ -11,10 +12,11 @@ export class TemplateTooltipDirective extends BaseTooltipDirective implements On
   private $container: any = null;
   private embeddedViewRef: EmbeddedViewRef<any> = null;
   constructor(
+    tooltipOptions: NgxStrapTooltipOptions,
     elementRef: ElementRef,
     private viewContainerRef: ViewContainerRef,
   ) {
-    super(elementRef);
+    super(tooltipOptions, elementRef);
   }
 
   ngOnInit() {
@@ -39,15 +41,15 @@ export class TemplateTooltipDirective extends BaseTooltipDirective implements On
     if (! this.ngxStrapTemplateTooltip) {
       return;
     }
-    const changeOptions: any = {};
+    const titleOptions: any = {};
     this.embeddedViewRef = this.viewContainerRef.createEmbeddedView(this.ngxStrapTemplateTooltip, {tooltip: this});
     this.$container = jQuery('<div></div>');
     this.$container.append(this.embeddedViewRef.rootNodes);
     this.embeddedViewRef.detach();
-    changeOptions.title = this.$container.get(0);
-    changeOptions.html = true;
-    const opts = this.options || {};
-    const options = Object.assign({}, opts, changeOptions);
+    titleOptions.title = this.$container.get(0);
+    titleOptions.html = true;
+    const instanceOptions = this.options || {};
+    const options = Object.assign({}, this.tooltipOptions, instanceOptions, titleOptions);
     this.$el.tooltip(options);
     this.bsTooltipInstance = true;
   }

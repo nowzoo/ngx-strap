@@ -102,3 +102,55 @@
     </div>
   </div>
 </section>
+
+<section class="demo-section">
+  <h2>Setting tooltip options with <code>data-</code> attributes </h2>
+  <p>
+    You can set an individual tooltip's options by adding
+    <code>data-</code> attributes, such as <code>data-animation="false"</code>.
+  </p>
+  <div class="d-flex align-items-center">
+    <div class="mr-4 mb-2">
+      <app-data-options></app-data-options>
+    </div>
+    <div class="mb-2">
+      <app-repo-link path="/blob/master/src/app/modals/demos/minimal.component.ts">Demo Code</app-repo-link>
+    </div>
+  </div>
+</section>
+
+<section class="demo-section">
+  <h2>Setting tooltip options with the directive's <code>options-</code> input </h2>
+  <p>
+    You can also set an individual tooltip's options by passing in an
+    <code>options-</code> object. Example <code>[options]="{{'{'}}animation:false{{'}'}}"</code>.
+  </p>
+  <div class="d-flex align-items-center">
+    <div class="mr-4 mb-2">
+      <app-input-options></app-input-options>
+    </div>
+    <div class="mb-2">
+      <app-repo-link path="/blob/master/src/app/modals/demos/minimal.component.ts">Demo Code</app-repo-link>
+    </div>
+  </div>
+</section>
+
+
+<section class="demo-section">
+  <h2>Overriding the global tooltip options</h2>
+  <p>
+    Bootstrap's
+    <a href="http://getbootstrap.com/docs/4.1/components/tooltips/#options">base tooltip options</a>
+    are applied by default. You can override these defaults
+    in a module or a component by providing <code>NgxStrapTooltipOptions</code>. The following demo component
+    sets <code>animation</code> to false and provides a custom <code>template</code>.
+  </p>
+  <div class="d-flex align-items-center">
+    <div class="mr-4 mb-2">
+      <app-default-options></app-default-options>
+    </div>
+    <div class="mb-2">
+      <app-repo-link path="/blob/master/src/app/modals/demos/minimal.component.ts">Demo Code</app-repo-link>
+    </div>
+  </div>
+</section>

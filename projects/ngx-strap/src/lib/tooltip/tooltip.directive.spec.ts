@@ -18,7 +18,7 @@ describe('TooltipDirective', () => {
     jQuery = window['jQuery'] = jasmine.createSpy().and.returnValue(jqEl);
     el =  document.createElement('span');
     elementRef = {nativeElement: el};
-    directive = new TooltipDirective(elementRef);
+    directive = new TooltipDirective({}, elementRef);
     directiveForTesting = directive;
   });
 

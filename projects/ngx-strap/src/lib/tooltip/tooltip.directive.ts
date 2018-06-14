@@ -1,5 +1,6 @@
 import { Directive, ElementRef, OnInit, OnDestroy, OnChanges, Input } from '@angular/core';
 import { BaseTooltipDirective } from './base-tooltip.directive';
+import { NgxStrapTooltipOptions } from './tooltip-options';
 
 @Directive({
   selector: '[ngxStrapTooltip]',
@@ -9,9 +10,10 @@ export class TooltipDirective extends BaseTooltipDirective implements OnInit, On
   @Input() ngxStrapTooltip: string;
 
   constructor(
+    tooltipOptions: NgxStrapTooltipOptions,
     elementRef: ElementRef
   ) {
-    super(elementRef);
+    super(tooltipOptions, elementRef);
 
   }
 
@@ -31,9 +33,9 @@ export class TooltipDirective extends BaseTooltipDirective implements OnInit, On
     if (this.bsTooltipInstance) {
       this.dispose();
     }
-    const titleOpt = this.ngxStrapTooltip ? {title: this.ngxStrapTooltip} : {};
-    const opts = this.options || {};
-    const options = Object.assign({}, opts, titleOpt);
+    const titleOptions = this.ngxStrapTooltip ? {title: this.ngxStrapTooltip} : {};
+    const instanceOptions = this.options || {};
+    const options = Object.assign({}, this.tooltipOptions, instanceOptions, titleOptions);
     this.$el.tooltip(options);
     this.bsTooltipInstance = true;
   }
