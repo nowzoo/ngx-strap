@@ -45,7 +45,7 @@ const tooltipOptions: NgxStrapTooltipOptions = {animation: false};
 export class MyModule { }
 ```
 
-You can do the same in components...
+You can do the same within the scope of a component...
 ```ts
 import { Component } from '@angular/core';
 import { NgxStrapTooltipOptions } from '@nowzoo/ngx-strap';
@@ -57,4 +57,20 @@ const tooltipOptions: NgxStrapTooltipOptions = {animation: false};
   providers: [{provide: NgxStrapTooltipOptions, useValue: tooltipOptions}]
 })
 export class MyComponent  { }
+```
+
+And, finally, you can pass in options to the directive, using the `options` input or using `data-` attributes:
+
+```html
+<!-- options input... -->
+<button class="btn btn-primary"
+  ngxStrapTooltip
+  [options]="{animation: false}"
+  title="Animation off">Submit</button>
+
+<!-- data- attribute... -->
+<button class="btn btn-primary"
+  ngxStrapTooltip
+  data-animation="false"
+  title="Animation off">Submit</button>
 ```
