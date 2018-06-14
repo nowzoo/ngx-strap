@@ -26,7 +26,7 @@ import { TooltipModule } from '@nowzoo/ngx-strap';
 export class MyModule { }
 ```
 
-The directives use Bootstrap's default tooltip options out of the box. Optionally, you can replace these options in your module by providing `NgxStrapTooltipOptions`...
+The directives use Bootstrap's default tooltip options out of the box. Optionally, you can replace these options in the scope of your module by providing `NgxStrapTooltipOptions`...
 
 ```ts
 import { TooltipModule, NgxStrapTooltipOptions } from '@nowzoo/ngx-strap';
@@ -42,4 +42,18 @@ const tooltipOptions: NgxStrapTooltipOptions = {animation: false};
   ]
 })
 export class MyModule { }
+```
+
+You can do the same in components...
+```ts
+import { Component } from '@angular/core';
+import { NgxStrapTooltipOptions } from '@nowzoo/ngx-strap';
+
+const tooltipOptions: NgxStrapTooltipOptions = {animation: false};
+
+@Component({
+  //...
+  providers: [{provide: NgxStrapTooltipOptions, useValue: tooltipOptions}]
+})
+export class MyComponent  { }
 ```
