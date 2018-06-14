@@ -6,7 +6,11 @@ import { ModalDirective } from './modal.directive';
   imports: [
     CommonModule
   ],
-  declarations: [ModalDirective],
-  exports: [ModalDirective]
+  declarations: [
+    ModalDirective
+  ],
+  exports: [
+    ModalDirective
+  ]
 })
 export class ModalModule { }

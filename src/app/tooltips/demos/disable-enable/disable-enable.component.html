@@ -1,0 +1,37 @@
+<div class="d-flex align-items-end">
+
+  <div class="form-group mr-2 mb-0">
+    <button class="btn btn-primary"
+      ngxStrapTooltip
+      #tooltipped="ngxStrapTooltip"
+      title="Hi There">
+      Hover
+    </button>
+  </div>
+  <div class="form-group mr-2 mb-0">
+    <button class="btn btn-secondary btn-sm"
+      ngxStrapTooltip
+      [disabled]="tooltipped.disabled"
+      (click)="tooltipped.disable()">
+      disable()
+    </button>
+  </div>
+  <div class="form-group mr-2 mb-0">
+    <button class="btn btn-secondary btn-sm"
+      ngxStrapTooltip
+      [disabled]="!tooltipped.disabled"
+      (click)="tooltipped.enable()">
+      enable()
+    </button>
+  </div>
+  <div class="form-group mr-2 mb-0">
+    <button class="btn btn-secondary btn-sm"
+      ngxStrapTooltip
+      (click)="tooltipped.toggleEnabled()">
+      toggleEnabled()
+    </button>
+  </div>
+</div>
+<div class="text-muted">
+  <small>disabled: {{tooltipped.disabled | json}}</small>
+</div>

@@ -1,0 +1,8 @@
+<ng-template #myTooltip>
+  Tooltip courtesy of a <strong>{{adjective}}</strong> template!
+</ng-template>
+<div class="form-group mr-2 mb-0">
+  <button class="btn btn-primary" [ngxStrapTemplateTooltip]="myTooltip">
+    Hover
+  </button>
+</div>
