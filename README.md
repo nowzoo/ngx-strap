@@ -12,7 +12,7 @@ The library comes with two tooltip directives:
  - `TooltipDirective` is a directive for use with the `title` attribute or simple string variables.
  - `TemplateTooltipDirective` displays a tooltip using an `ng-template`. You should use this if you have complicated markup and/or lots of interpolation.
 
- **Import the module**
+### Import `TooltipModule`
 
 ```ts
 import { TooltipModule } from '@nowzoo/ngx-strap';
@@ -26,6 +26,7 @@ import { TooltipModule } from '@nowzoo/ngx-strap';
 export class MyModule { }
 ```
 
+### Tooltip Options
 The directives use Bootstrap's default tooltip options out of the box. Optionally, you can replace these options in the scope of your module by providing `NgxStrapTooltipOptions`...
 
 ```ts
