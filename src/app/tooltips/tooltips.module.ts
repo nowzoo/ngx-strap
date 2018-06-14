@@ -16,6 +16,7 @@ import { GoAwayComponent } from './demos/go-away/go-away.component';
 import { DefaultOptionsComponent } from './demos/default-options/default-options.component';
 import { DataOptionsComponent } from './demos/data-options/data-options.component';
 import { InputOptionsComponent } from './demos/input-options/input-options.component';
+import { EventsComponent } from './demos/events/events.component';
 
 @NgModule({
   imports: [
@@ -29,6 +30,6 @@ import { InputOptionsComponent } from './demos/input-options/input-options.compo
     TooltipsRouteComponent, AnotherRouteComponent,
     StringComponent, TitleComponent,
     TemplateComponent, ShowHideComponent,
-    DisableEnableComponent, GoAwayComponent, DefaultOptionsComponent, DataOptionsComponent, InputOptionsComponent]
+    DisableEnableComponent, GoAwayComponent, DefaultOptionsComponent, DataOptionsComponent, InputOptionsComponent, EventsComponent]
 })
 export class TooltipsModule { }

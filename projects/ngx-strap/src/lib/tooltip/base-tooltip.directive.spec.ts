@@ -17,7 +17,8 @@ describe('BaseTooltipDirective', () => {
       };
       const types = type.split(' ');
       types.forEach((t) => {
-          el.addEventListener(t, listener);
+        const name = t.split('.').shift();
+        el.addEventListener(name, listener);
       });
 
     })};
@@ -41,16 +42,16 @@ describe('BaseTooltipDirective', () => {
       spyOn(directive.events, 'emit').and.callThrough();
       expect(jqEl.on).toHaveBeenCalledWith(jasmine.any(String), jasmine.any(Function));
       let eventFromDom;
-      eventFromDom = new Event('show.bs.tooltip');
+      eventFromDom = new Event('show');
       el.dispatchEvent(eventFromDom);
       expect(directive.events.emit).toHaveBeenCalledWith(eventFromDom);
-      eventFromDom = new Event('shown.bs.tooltip');
+      eventFromDom = new Event('shown');
       el.dispatchEvent(eventFromDom);
       expect(directive.events.emit).toHaveBeenCalledWith(eventFromDom);
-      eventFromDom = new Event('hide.bs.tooltip');
+      eventFromDom = new Event('hide');
       el.dispatchEvent(eventFromDom);
       expect(directive.events.emit).toHaveBeenCalledWith(eventFromDom);
-      eventFromDom = new Event('hidden.bs.tooltip');
+      eventFromDom = new Event('hidden');
       el.dispatchEvent(eventFromDom);
       expect(directive.events.emit).toHaveBeenCalledWith(eventFromDom);
     });
@@ -102,6 +103,20 @@ describe('BaseTooltipDirective', () => {
       directive.toggle();
       expect(jqEl.tooltip).toHaveBeenCalledWith('toggle');
     });
+    it('should return a promise that resolves when the tooltip is toggled if we are hiding', fakeAsync(() => {
+      let resolved;
+      directive.toggle().then(() => resolved = true);
+      directive.events.emit({type: 'hidden'} as Event);
+      tick();
+      expect(resolved).toBe(true);
+    }));
+    it('should return a promise that resolves when the tooltip is toggled if we are showing', fakeAsync(() => {
+      let resolved;
+      directive.toggle().then(() => resolved = true);
+      directive.events.emit({type: 'shown'} as Event);
+      tick();
+      expect(resolved).toBe(true);
+    }));
   });
   describe('enable()', () => {
     it('should call enable on the bootstrap tooltip', () => {
