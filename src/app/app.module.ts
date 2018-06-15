@@ -8,7 +8,7 @@ import { ModalModule } from '@nowzoo/ngx-strap';
 import { NgxHighlightJsModule } from '@nowzoo/ngx-highlight-js';
 
 const routes: Routes = [
-  {path: 'tooltips', loadChildren: './tooltips/tooltips.module#TooltipsModule'},
+  {path: 'popups', loadChildren: './popups/popups.module#PopupsModule'},
   {path: 'modals', loadChildren: './modals/modals.module#ModalsModule'},
   {path: '', loadChildren: './home/home.module#HomeModule'}
 ];
