@@ -127,14 +127,15 @@ An abstract base class for the two flavors of tooltip directive below.
   - `events: EventEmitter<Event>` The native Bootstrap tooltip events.
 
 
-#### Directive: `TooltipDirective`
-selector: `[ngxStrapTooltip]` | exportAs: `ngxStrapTooltip`
+#### Directive: `TooltipDirective extends BaseTooltipDirective`
+- selector: `[ngxStrapTooltip]`
+- exportAs: `ngxStrapTooltip`
+- Inputs
+  - `ngxStrapTooltip: string` Optional. The string variable you want to display. If you only need to display a static string you can omit this, and use the `title` attribute instead.
 
-**Input**
-- `ngxStrapTooltip: string` Optional. The string variable you want to display. If you only need to display a static string you can omit this, and use the `title` attribute instead.
 
-#### Directive: `TemplateTooltipDirective`
-selector: `[ngxStrapTemplateTooltip]` | exportAs: `ngxStrapTemplateTooltip`
-
-**Input**
-- `ngxStrapTemplateTooltip: TemplateRef` Required. The template you want to associate with the tooltip.
+#### Directive: `TemplateTooltipDirective extends BaseTooltipDirective`
+- selector: `[ngxStrapTemplateTooltip]`
+- exportAs: `ngxStrapTemplateTooltip`
+- Inputs
+  - `ngxStrapTemplateTooltip: TemplateRef` Required. The template you want to associate with the tooltip.
