@@ -108,7 +108,7 @@ interface ITooltipOptions { [key: string]: any; }
 ```ts
 class NgxStrapTooltipOptions implements ITooltipOptions {}
 ```
-This is an empty object, which means Bootstrap's native option defaults are used. Set your own default options by providing a replacement in your module or component. See [Tooltip Options](#tooltip-options) above.
+This is an empty class, which means Bootstrap's native option defaults are used. Set your own default options by providing a replacement in your module or component. See [Tooltip Options](#tooltip-options) above.
 
 #### Class: `BaseTooltipDirective`
 An abstract base class for the two flavors of tooltip directive below.
