@@ -75,7 +75,7 @@ And, finally, you can pass in options to the directive, using the `options` inpu
   title="Animation off">Submit</button>
 ```
 
-### Add a simple tooltip
+### Simple tooltip
 If you need a tooltip to display a simple string or string variable, use the `TooltipDirective` (using the `ngxStrapTooltip` selector.) You can use the `title` attribute or bind a variable with `[ngxStrapTooltip]="tooltipString"`.
 ```html
 <!-- title... -->
@@ -94,4 +94,14 @@ If you want the tooltip to display more complex markup and variable interpolatio
 <button class="btn btn-primary" [ngxStrapTemplateTooltip]="myTooltip">...</button>
 ```
 
-Note: Template tooltips always set the `html` option to `true`. 
+Note: Template tooltips always set the `html` option to `true`. Always sanitize user input before sticking it in the template.
+
+### Tooltip API
+
+```ts
+interface ITooltipOptions { [key: string]: any; }
+```
+
+```ts
+class NgxStrapTooltipOptions implements ITooltipOptions {}
+```
