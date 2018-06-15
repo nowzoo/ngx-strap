@@ -98,10 +98,13 @@ Note: Template tooltips always set the `html` option to `true`. Always sanitize 
 
 ### Tooltip API
 
+#### Interface: `ITooltipOptions`
+
 ```ts
 interface ITooltipOptions { [key: string]: any; }
 ```
 
+#### Class: `NgxStrapTooltipOptions`
 ```ts
 class NgxStrapTooltipOptions implements ITooltipOptions {}
 ```
