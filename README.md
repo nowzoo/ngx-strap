@@ -105,3 +105,37 @@ interface ITooltipOptions { [key: string]: any; }
 ```ts
 class NgxStrapTooltipOptions implements ITooltipOptions {}
 ```
+This is an empty object, which means Bootstrap's native option defaults are used. Set your own default options by providing a replacement in your module or component. See [Tooltip Options](#tooltip-options) above.
+
+#### Class: `BaseTooltipDirective`
+An abstract base class for the two flavors of tooltip directive below.
+
+**Shared Input**
+- `options: ITooltipOptions` Optional. Options to be applied to this instance. These will override any global options.
+
+**Shared Methods**
+- `show(): Promise<void>` Shows the tooltip programmatically. The promise resolves when the tooltip has been fully shown.
+- `hide(): Promise<void>` Hides the tooltip programmatically. The promise resolves when the tooltip has been fully hidden.
+- `toggle(): Promise<void>` Toggles the tooltip programmatically. The promise resolves when the tooltip has been fully shown or hidden.
+- `enable(): void` Allows the tooltip to be shown.
+- `disable(): void` Stops the tooltip from being shown.
+- `toggleEnabled(): void` Toggles the enabled state.
+- `update(): void` Updates the position of the tooltip. Use this as needed, such as when the content changes.
+- `dispose(): void` Disposes of the tooltip and any associated templates.
+
+**Shared Properties**
+- `state: 'hidden' | 'hiding' | 'shown' | 'showing'` The visibility of the tooltip.
+- `disabled: boolean` Whether the tooltip is currently disabled.
+- `events: EventEmitter<Event>` The native Bootstrap tooltip events.
+
+#### Directive: `TooltipDirective`
+selector: `[ngxStrapTooltip]` | exportAs: `ngxStrapTooltip`
+
+**Input**
+- `ngxStrapTooltip: string` Optional. The string variable you want to display. If you only need to display a static string you can omit this, and use the `title` attribute instead.
+
+#### Directive: `TemplateTooltipDirective`
+selector: `[ngxStrapTemplateTooltip]` | exportAs: `ngxStrapTemplateTooltip`
+
+**Input**
+- `ngxStrapTemplateTooltip: TemplateRef` Required. The template you want to associate with the tooltip.
