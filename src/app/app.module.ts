@@ -5,9 +5,10 @@ import { NgxMdModule } from 'ngx-md';
 
 import { AppComponent } from './app.component';
 import { ModalModule } from '@nowzoo/ngx-strap';
-import { NgxHighlightJsModule } from '@nowzoo/ngx-highlight-js';
+import { NgxHighlightJsModule , NgxHighlightJsOptions} from '@nowzoo/ngx-highlight-js';
 
 const routes: Routes = [
+  {path: 'tabs', loadChildren: './tabs/tabs.module#TabsModule'},
   {path: 'popups', loadChildren: './popups/popups.module#PopupsModule'},
   {path: 'modals', loadChildren: './modals/modals.module#ModalsModule'},
   {path: '', loadChildren: './home/home.module#HomeModule'}

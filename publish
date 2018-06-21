@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# bump the version
+cd projects/ngx-strap
+VERSION="$(npm version patch)"
+cd ../..
+
+# build the lib
+ng build ngx-strap --prod
+cp README.md LICENSE dist/ngx-strap/
+
+# publish to NPM
+cd dist/ngx-strap
+npm publish
+cd ../..
+
+
+
+# build the demo
+ng build --aot --prod --base-href /ngx-strap/
+
+# write the version to the demo...
+# echo "${VERSION}" >> docs/VERSION
+
+
+
+# commit with tag
+git add -A
+git commit -m "published version ${VERSION} to npm"
+git tag  $VERSION
+git push
+git push --tags

@@ -15,3 +15,8 @@
  export * from './lib/popup/tooltip.directive';
  export * from './lib/popup/popover.directive';
  export * from './lib/popup/popup.module';
+
+ export * from './lib/tabs/tab-title.directive';
+ export * from './lib/tabs/tab.directive';
+ export * from './lib/tabs/tabs.component';
+ export * from './lib/tabs/tabs.module';
