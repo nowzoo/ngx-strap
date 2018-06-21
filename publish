@@ -11,7 +11,7 @@ cp README.md LICENSE dist/ngx-strap/
 
 # publish to NPM
 cd dist/ngx-strap
-npm publish
+npm publish --access public
 cd ../..
 
 
