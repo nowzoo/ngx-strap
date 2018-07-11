@@ -19,6 +19,7 @@ import { EventsComponent } from './demos/events.component';
 import { HideComponent } from './demos/hide.component';
 import { HandleUpdateComponent } from './demos/handle-update.component';
 import { RouteChangeComponent } from './demos/route-change.component';
+import { DemoMinimalComponent } from './demo-minimal/demo-minimal.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { RouteChangeComponent } from './demos/route-change.component';
     HideComponent,
     HandleUpdateComponent,
     RouteChangeComponent,
-    AnotherRouteComponent
+    AnotherRouteComponent,
+    DemoMinimalComponent
   ]
 })
 export class ModalsModule { }
