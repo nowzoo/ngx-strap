@@ -1,10 +1,10 @@
-import { ModalModule } from './modal.module';
+import { NgxStrapModalModule } from './modal.module';
 
 describe('ModalModule', () => {
-  let modalModule: ModalModule;
+  let modalModule: NgxStrapModalModule;
 
   beforeEach(() => {
-    modalModule = new ModalModule();
+    modalModule = new NgxStrapModalModule();
   });
 
   it('should create an instance', () => {

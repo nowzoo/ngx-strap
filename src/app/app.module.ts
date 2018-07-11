@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgxMdModule } from 'ngx-md';
 
 import { AppComponent } from './app.component';
-import { ModalModule } from '@nowzoo/ngx-strap';
 import { NgxHighlightJsModule , NgxHighlightJsOptions} from '@nowzoo/ngx-highlight-js';
 
 const routes: Routes = [
@@ -22,7 +21,6 @@ const routes: Routes = [
     NgxMdModule.forRoot(),
     NgxHighlightJsModule.forRoot(),
     RouterModule.forRoot(routes),
-    ModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ModalDirective } from './modal.directive';
+import { NgxStrapModalDirective } from './modal.directive';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    ModalDirective
+    NgxStrapModalDirective
   ],
   exports: [
-    ModalDirective
+    NgxStrapModalDirective
   ]
 })
-export class ModalModule { }
+export class NgxStrapModalModule { }
