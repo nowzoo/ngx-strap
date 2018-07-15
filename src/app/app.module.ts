@@ -1,14 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NgxMdModule } from 'ngx-md';
 
 import { AppComponent } from './app.component';
 import { NgxHighlightJsModule , NgxHighlightJsOptions} from '@nowzoo/ngx-highlight-js';
 
 const routes: Routes = [
-  {path: 'tabs', loadChildren: './tabs/tabs.module#TabsModule'},
-  {path: 'popups', loadChildren: './popups/popups.module#PopupsModule'},
   {path: 'modals', loadChildren: './modals/modals.module#ModalsModule'},
   {path: '', loadChildren: './home/home.module#HomeModule'}
 ];
@@ -18,7 +15,6 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    NgxMdModule.forRoot(),
     NgxHighlightJsModule.forRoot(),
     RouterModule.forRoot(routes),
   ],

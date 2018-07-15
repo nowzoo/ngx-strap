@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { NgxStrapTabsComponent } from './tabs.component';
 import { NgxStrapTabDirective } from './tab.directive';
 
@@ -37,24 +38,33 @@ describe('NgxStrapTabsComponent', () => {
   });
 
   describe('handleEvent(event)', () => {
-    beforeEach(() => {
-      spyOn(component.events, 'emit').and.callThrough();
-      spyOn(component.shownTab, 'emit').and.callThrough();
+    let ngUnsubscribe: Subject<void>;
+    let lastEvent;
+    let currentTab;
+    afterEach(() => {
+      ngUnsubscribe.next();
+      ngUnsubscribe.complete();
     });
-    it('should emit the event', () => {
-      const event: any = {type: 'shown', target: {id: 'foo-tab'}};
+    beforeEach(() => {
+      ngUnsubscribe = new Subject<void>();
+      component.events.pipe(takeUntil(ngUnsubscribe)).subscribe(val => lastEvent = val);
+      component.shown.pipe(takeUntil(ngUnsubscribe)).subscribe(val => currentTab = val);
+
+    });
+    it('should push the event', () => {
+      const event: any = {type: 'shown', target: {id: component.linkIdFromTabId('foo')}};
       component.handleEvent(event);
-      expect(component.events.emit).toHaveBeenCalledWith(event);
+      expect(lastEvent).toBe(event);
     });
     it('should emit the tabId in shownTab on shown', () => {
-      const event: any = {type: 'shown', target: {id: 'foo-tab'}};
+      const event: any = {type: 'shown', target: {id: component.linkIdFromTabId('foo')}};
       component.handleEvent(event);
-      expect(component.shownTab.emit).toHaveBeenCalledWith('foo');
+      expect(currentTab).toBe('foo');
     });
     it('should emit null in shownTab on hidden', () => {
-      const event: any = {type: 'hidden', target: {id: 'foo-tab'}};
+      const event: any = {type: 'hidden', target: {id: component.linkIdFromTabId('foo')}};
       component.handleEvent(event);
-      expect(component.shownTab.emit).toHaveBeenCalledWith(null);
+      expect(currentTab).toBe(null);
     });
   });
 
@@ -62,7 +72,7 @@ describe('NgxStrapTabsComponent', () => {
     it('should select the right tab, after a timeout', fakeAsync(() => {
       component.show('foo');
       tick();
-      expect(jQuery).toHaveBeenCalledWith('#foo-tab', (component as any).elementRef.nativeElement);
+      expect(jQuery).toHaveBeenCalledWith('#' + component.linkIdFromTabId('foo'), (component as any).elementRef.nativeElement);
     }));
     it('should call tab with show, after a timeout', fakeAsync(() => {
       component.show('foo');
@@ -132,6 +142,23 @@ describe('NgxStrapTabsComponent', () => {
       component.initialized = false;
       component.updateTabs();
       expect(component.show).toHaveBeenCalledWith('foo');
+    });
+  });
+
+  describe('paneIdFromTabId(tabId)', () => {
+    it('should return a string', () => {
+      expect(component.paneIdFromTabId('foo')).toBe(component.componentId + '-foo-pane' );
+    });
+  });
+  describe('linkIdFromTabId(tabId)', () => {
+    it('should return a string', () => {
+      expect(component.linkIdFromTabId('foo')).toBe(component.componentId + '-foo-link' );
+    });
+  });
+  describe('tabIdFromLinkId(linkId)', () => {
+    it('should return a string', () => {
+      const linkId = component.componentId + '-foo-link';
+      expect(component.tabIdFromLinkId(linkId)).toBe('foo');
     });
   });
 

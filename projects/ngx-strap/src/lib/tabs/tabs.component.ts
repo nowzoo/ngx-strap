@@ -1,6 +1,22 @@
-import { Component, Input, Output, OnInit, AfterContentInit,
-  ContentChildren, ElementRef, TemplateRef, QueryList, EventEmitter } from '@angular/core';
-import { Observable, combineLatest } from 'rxjs';
+import {
+  Component,
+  Input,
+  Output,
+  OnInit,
+  OnDestroy,
+  AfterContentInit,
+  ContentChildren,
+  ElementRef,
+  TemplateRef,
+  QueryList,
+  EventEmitter
+} from '@angular/core';
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  combineLatest
+} from 'rxjs';
 import { NgxStrapTabDirective } from './tab.directive';
 import { NgxStrapTabTitleDirective } from './tab-title.directive';
 
@@ -17,26 +33,44 @@ export interface TabInfo {
 
 @Component({
   selector: 'ngx-strap-tabs',
+  exportAs: 'ngxStrapTabs',
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.css'],
 })
-export class NgxStrapTabsComponent implements OnInit, AfterContentInit {
+export class NgxStrapTabsComponent implements OnInit, AfterContentInit, OnDestroy {
+  static componentCount = 0;
   @ContentChildren(NgxStrapTabDirective) tabDirectives: QueryList<NgxStrapTabDirective>;
   @ContentChildren(NgxStrapTabTitleDirective) tabTitleDirectives: QueryList<NgxStrapTabTitleDirective>;
   @Input() type = 'tabs';
   @Input() fade = true;
-  @Output() events: EventEmitter<Event> = new EventEmitter();
-  @Output() shownTab: EventEmitter<string> = new EventEmitter();
+
+
+
+  private _events$: Subject<Event> = new Subject();
+  private _shown$: BehaviorSubject<string> = new BehaviorSubject(null);
+
 
   tabs: TabInfo[] = [];
   initialized = false;
+  componentId: string;
   constructor(
     private elementRef: ElementRef
   ) { }
 
+  get shown():  Observable<string> {
+    return this._shown$.asObservable();
+  }
+  get events():  Observable<Event> {
+    return this._events$.asObservable();
+  }
+
   ngOnInit() {
+    NgxStrapTabsComponent.componentCount ++;
+    this.componentId = 'ngx-strap-tabs-' + NgxStrapTabsComponent.componentCount;
     jQuery(this.elementRef.nativeElement).on(
-      'show.bs.tab	shown.bs.tab hide.bs.tab hidden.bs.tab', this.handleEvent.bind(this));
+      'show.bs.tab shown.bs.tab hide.bs.tab hidden.bs.tab',
+      this.handleEvent.bind(this)
+    );
 
   }
 
@@ -44,6 +78,10 @@ export class NgxStrapTabsComponent implements OnInit, AfterContentInit {
   ngAfterContentInit() {
     combineLatest(this.tabDirectives.changes, this.tabTitleDirectives.changes).subscribe(this.updateTabs.bind(this));
     this.updateTabs();
+  }
+
+  ngOnDestroy() {
+    jQuery(this.elementRef.nativeElement).off('show.bs.tab shown.bs.tab hide.bs.tab hidden.bs.tab');
   }
 
   updateTabs() {
@@ -58,7 +96,7 @@ export class NgxStrapTabsComponent implements OnInit, AfterContentInit {
         tabTemplate: tabDirective.templateRef,
         titleTemplate: titleDirective ? titleDirective.templateRef : null,
         title: titleAsString,
-        initiallyActive: tabDirective.active === true
+        initiallyActive: tabDirective.active === true,
       };
     });
 
@@ -78,22 +116,32 @@ export class NgxStrapTabsComponent implements OnInit, AfterContentInit {
       event.preventDefault();
     }
     setTimeout(( ) => {
-      jQuery('#' + tabId + '-tab', this.elementRef.nativeElement).tab('show');
+      jQuery('#' + this.linkIdFromTabId(tabId), this.elementRef.nativeElement).tab('show');
     });
 
   }
 
   handleEvent(event: Event) {
-    this.events.emit(event);
-    const id = (event.target as any).id.replace(/\-tab$/, '');
+    this._events$.next(event);
+    const id = this.tabIdFromLinkId((event.target as any).id);
     switch (event.type) {
       case 'shown':
-        this.shownTab.emit(id);
+        this._shown$.next(id);
         break;
       case 'hidden':
-        this.shownTab.emit(null);
+        this._shown$.next(null);
         break;
     }
+  }
+
+  linkIdFromTabId(tabId: string) {
+    return `${this.componentId}-${tabId}-link`;
+  }
+  tabIdFromLinkId(linkId: string): string {
+    return linkId.replace(this.componentId + '-', '').replace(/\-link$/, '');
+  }
+  paneIdFromTabId(tabId: string) {
+    return `${this.componentId}-${tabId}-pane`;
   }
 
 }

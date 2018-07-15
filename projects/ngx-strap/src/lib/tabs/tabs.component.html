@@ -1,15 +1,18 @@
 <ul class="nav"
   [class.nav-tabs]="'tabs'===type"
   [class.nav-pills]="'pills'===type"
-  role="tablist" *ngIf="tabs && tabs.length > 0">
+  role="tablist"
+  *ngIf="tabs && tabs.length > 0">
   <li class="nav-item" *ngFor="let t of tabs">
+
     <a
       class="nav-link"
       role="tab"
-      [attr.data-toggle]="'pills'===type ? 'pill' : 'tab'"
       [attr.href]="'#' + t.tabId"
-      [attr.id]="t.tabId + '-tab'"
-      [attr.aria-controls]="t.tabId">
+      [attr.data-toggle]="'tabs'===type ? 'tab' : 'pill'"
+      [attr.data-target]="'#' + paneIdFromTabId(t.tabId)"
+      [attr.id]="linkIdFromTabId(t.tabId)"
+      [attr.aria-controls]="paneIdFromTabId(t.tabId)">
       <ng-container *ngTemplateOutlet="t.titleTemplate"></ng-container>
       <span *ngIf="!t.titleTemplate">{{t.title}}</span>
     </a>
@@ -22,8 +25,8 @@
     [class.fade]="fade"
     role="tabpanel"
     *ngFor="let t of tabs"
-    [attr.id]="t.tabId"
-    [attr.aria-labelledby]="t.tabId + '-tab'">
+    [attr.id]="paneIdFromTabId(t.tabId)"
+    [attr.aria-labelledby]="linkIdFromTabId(t.tabId)">
     <ng-container *ngTemplateOutlet="t.tabTemplate"></ng-container>
   </div>
 </div>

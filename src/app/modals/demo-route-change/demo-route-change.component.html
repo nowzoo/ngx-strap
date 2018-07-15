@@ -1,7 +1,10 @@
 <section class="demo">
-  <h2>Minimal Demo</h2>
+  <h2>Route Change Demo</h2>
+  <p class="lead">
+    Modals disappear gracefully when the underlying template is destroyed, such as on route change.
+  </p>
   <p>
-    <a href="https://github.com/nowzoo/ngx-strap/tree/master/src/app/modals/demo-minimal">Demo Code</a>
+    <a href="https://github.com/nowzoo/ngx-strap/tree/master/src/app/modals/demo-route-change">Demo Code</a>
   </p>
   <div class="row">
     <div class="col-lg-6">
@@ -18,10 +21,10 @@
                 </button>
               </div>
               <div class="modal-body">
-                <p>{{message}}</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                Modals go away automatically and gracefully when the underlying directive is destroyed,
+                for example, when a
+                <a routerLink="/modals/another">link in the modal
+                triggers a route change</a>.
               </div>
             </div>
           </div>

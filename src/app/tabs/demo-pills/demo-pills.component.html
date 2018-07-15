@@ -1,0 +1,40 @@
+<section class="demo">
+  <h2>Pills Demo</h2>
+  <p class="lead">
+    Use <code>type="pills"</code>.
+  </p>
+  <div class="row">
+    <div class="col-lg-6">
+      <ngx-strap-tabs #tabs="ngxStrapTabs" type="pills">
+        <ng-template ngxStrapTab tabId="home" tabTitle="Home">
+          <div class="m-2">
+            <p>This is the home tab.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </div>
+        </ng-template>
+        <ng-template ngxStrapTab tabId="about" tabTitle="About">
+          <div class="m-2">
+            <p>This is the about tab.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </div>
+        </ng-template>
+        <ng-template ngxStrapTab tabId="contact" tabTitle="Contact Us">
+
+          <div class="m-2">
+            <p>This is the contact tab.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </div>
+        </ng-template>
+      </ngx-strap-tabs>
+    </div>
+    <div class="col-lg-6">
+      Shown: {{tabs.shown | async}}
+    </div>
+  </div>
+</section>
