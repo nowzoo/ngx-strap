@@ -1,11 +1,14 @@
 import { TestBed, inject } from '@angular/core/testing';
-
+import { Router } from '@angular/router';
 import { ModalService } from './modal.service';
 
 describe('ModalService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ModalService]
+      providers: [
+        ModalService,
+        {provide: Router, useValue: {}}
+      ]
     });
   });
 

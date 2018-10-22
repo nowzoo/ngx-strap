@@ -14,15 +14,15 @@
       "node_modules/@types"
     ],
     "lib": [
-      "es2017",
+      "es2018",
       "dom"
     ],
     "paths": {
-      "@nowzoo/ngx-strap": [
-        "dist/ngx-strap"
+      "ngx-test": [
+        "dist/ngx-test"
       ],
-      "@nowzoo/ngx-strap/*": [
-        "dist/ngx-strap/*"
+      "ngx-test/*": [
+        "dist/ngx-test/*"
       ]
     }
   }
