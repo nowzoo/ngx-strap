@@ -1,0 +1,16 @@
+<h6>Tooltip Events</h6>
+<p class="text-muted">
+  The <code>events</code> output emits the native
+  Bootstrap events.
+</p>
+
+<p>
+  <button type="button"
+    class="btn btn-primary"
+    ngxStrapTooltip
+    (events)="onTooltipEvent($event)"
+    title="Toolitip Title">Events</button>
+    <br>
+     <small>Events: {{events.join(', ')}}</small>
+</p>
+<pre>ngxStrapTooltip (events)="onTooltipEvent($event)"</pre>

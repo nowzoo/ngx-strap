@@ -1,0 +1,29 @@
+<h6>Dismiss on Click Outside</h6>
+<p class="text-muted">
+  To allow clicks within the popover without dismissing it, but
+  dismiss it on a click outside, use
+   <code>[popoverDismissOnClickOutside]="true"</code>
+</p>
+
+<p>
+  <button type="button"
+    class="btn btn-primary"
+    ngxStrapPopover
+    #popover="ngxStrapPopover"
+    [popoverDismissOnClickOutside]="true"
+    [popoverTitle]="myTitle"
+    [popoverContent]="myContent">Dismiss on Click Outside the Popover</button>
+
+</p>
+<pre>ngxStrapPopover [popoverDismissOnClickOutside]="true"</pre>
+<ng-template #myContent>
+  A click inside the popover will not dismiss it. A click outside of it will.
+  <a  href="https://google.com" target="_blank">Try It</a>
+</ng-template>
+
+<ng-template #myTitle>
+  <div class="d-flex justify-content-between align-items-center">
+    <span>Popover Title</span>
+    <button type="button" class="close" (click)="popover.hide()">&times;</button>
+  </div>
+</ng-template>

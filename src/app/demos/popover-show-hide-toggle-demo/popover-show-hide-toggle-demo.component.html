@@ -1,0 +1,31 @@
+<h6>Show and Hide the Popover Manually</h6>
+<p class="text-muted">
+  To manually control the popover's trigger behavior,
+  set <code>data-trigger="manual"</code> and
+  use the directive's <code>show()</code>, <code>hide()</code>
+  and <code>toggle()</code> methods. The directive is exported as
+  <code>ngxStrapPopover</code>.
+</p>
+
+<p>
+  <button type="button"
+    class="btn btn-primary mr-2"
+    ngxStrapPopover
+    data-trigger="manual"
+    #popover="ngxStrapPopover"
+    title="Popover Title"
+    data-content="Some popover content.">Button with Popover</button>
+</p>
+<pre>ngxStrapPopover data-trigger="manual" #popover="ngxStrapPopover"</pre>
+
+<p>
+  <button type="button"
+    class="btn btn-secondary btn-sm mr-2"
+    (click)="popover.show()">popover.show()</button>
+  <button type="button"
+    class="btn btn-secondary btn-sm mr-2"
+    (click)="popover.hide()">popover.hide()</button>
+  <button type="button"
+    class="btn btn-secondary btn-sm mr-2"
+    (click)="popover.toggle()">popover.toggle()</button>
+</p>

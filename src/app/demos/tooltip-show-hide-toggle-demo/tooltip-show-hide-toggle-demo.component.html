@@ -1,0 +1,30 @@
+<h6>Programmatically Show and Hide the Tooltip</h6>
+<p class="text-muted">
+  To manually control the tooltip's trigger behavior,
+  set <code>data-trigger="manual"</code> and
+  use the directive's <code>show()</code>, <code>hide()</code>
+  and <code>toggle()</code> methods. The directive is exported as
+  <code>ngxStrapTooltip</code>.
+</p>
+
+<p>
+  <button type="button"
+    class="btn btn-primary mr-2"
+    ngxStrapTooltip
+    data-trigger="manual"
+    #tooltip="ngxStrapTooltip"
+    title="Toolitip Title">Button with Tooltip</button>
+</p>
+<pre>ngxStrapTooltip data-trigger="manual" #tooltip="ngxStrapTooltip"</pre>
+
+<p>
+  <button type="button"
+    class="btn btn-secondary btn-sm mr-2"
+    (click)="tooltip.show()">tooltip.show()</button>
+  <button type="button"
+    class="btn btn-secondary btn-sm mr-2"
+    (click)="tooltip.hide()">tooltip.hide()</button>
+  <button type="button"
+    class="btn btn-secondary btn-sm mr-2"
+    (click)="tooltip.toggle()">tooltip.toggle()</button>
+</p>

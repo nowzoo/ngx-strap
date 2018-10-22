@@ -1,0 +1,21 @@
+<h6>Enabling/Disabling the Popover</h6>
+<p class="text-muted">
+  Use the <code>popoverEnabled</code> input to control whether the popover can be shown.
+</p>
+
+<p>
+  <button type="button"
+    class="btn btn-primary"
+    ngxStrapPopover
+    [popoverEnabled]="popoverEnabled"
+    title="Popover Title"
+    data-content="Some popover content">Button with Popover</button>
+    <br>
+     <small>popoverEnabled: {{popoverEnabled | json}}</small>
+</p>
+<pre>ngxStrapPopover [popoverEnabled]="popoverEnabled"</pre>
+<p>
+  <button type="button"
+    class="btn btn-secondary btn-sm mr-2"
+    (click)="popoverEnabled = ! popoverEnabled">Toggle Enabled</button>
+</p>

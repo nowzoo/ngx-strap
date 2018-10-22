@@ -1,0 +1,17 @@
+<h6>Popover Delay</h6>
+<p class="text-muted">
+  You can set the delay with the <code>data-delay</code> attribute,
+  but if you need to pass an object (e.g., <code>{{ '{' }}show: number, hide: number}</code>)
+  rather than a number, use the <code>popoverDelay</code> input.
+</p>
+
+<p>
+  <button type="button"
+    class="btn btn-primary"
+    ngxStrapPopover
+    [popoverDelay]="{show: 500, hide: 0}"
+    title="Popover Delay"
+    data-content="Show delayed for 500 ms, immediately hidden">PopoverDelay</button>
+
+</p>
+<pre>ngxStrapPopover [popoverDelay]="{{ '{' }}show: 500, hide: 0}"</pre>

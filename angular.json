@@ -3,21 +3,17 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-library-starter-demo": {
+    "ngx-strap-demo": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {
-        "@schematics/angular:component": {
-          "styleext": "scss"
-        }
-      },
+      "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "docs",
+            "outputPath": "dist/ngx-strap-demo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,11 +23,11 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/scss/bootstrap.scss",
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/jquery/dist/jquery.slim.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
@@ -59,18 +55,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-library-starter-demo:build"
+            "browserTarget": "ngx-strap-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-library-starter-demo:build:production"
+              "browserTarget": "ngx-strap-demo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-library-starter-demo:build"
+            "browserTarget": "ngx-strap-demo:build"
           }
         },
         "test": {
@@ -81,7 +77,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": [],
             "assets": [
@@ -104,7 +100,7 @@
         }
       }
     },
-    "ngx-library-starter-demo-e2e": {
+    "ngx-strap-demo-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -112,11 +108,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngx-library-starter-demo:serve"
+            "devServerTarget": "ngx-strap-demo:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngx-library-starter-demo:serve:production"
+              "devServerTarget": "ngx-strap-demo:serve:production"
             }
           }
         },
@@ -131,7 +127,6 @@
         }
       }
     },
-    
     "ngx-strap": {
       "root": "projects/ngx-strap",
       "sourceRoot": "projects/ngx-strap/src",
@@ -173,5 +168,5 @@
       }
     }
   },
-  "defaultProject": "ngx-library-starter-demo"
+  "defaultProject": "ngx-strap-demo"
 }

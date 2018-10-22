@@ -1,16 +1,15 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgxStrapModalDirective } from './modal.directive';
-
+import { ModalService } from './modal.service';
 @NgModule({
   imports: [
     CommonModule
-  ],
-  declarations: [
-    NgxStrapModalDirective
-  ],
-  exports: [
-    NgxStrapModalDirective
   ]
 })
-export class NgxStrapModalModule { }
+export class ModalModule {
+  public static forRoot(): ModuleWithProviders {
+    return {ngModule: ModalModule, providers: [
+      ModalService
+    ]};
+  }
+}

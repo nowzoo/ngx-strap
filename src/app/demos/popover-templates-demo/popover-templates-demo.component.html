@@ -1,0 +1,25 @@
+<h6>Popover Using  Templates</h6>
+
+<p class="text-muted">
+  For more complex html and bindings, use
+  the <code>popoverTitle</code> and <code>popoverContent</code> inputs with templates
+  to set the popover title and content.
+</p>
+
+<p>
+  <button type="button"
+    class="btn btn-primary"
+    ngxStrapPopover
+    [popoverTitle]="myTitleTemplate"
+    [popoverContent]="myContentTemplate">Tooltip from Template</button>
+
+</p>
+<ng-template #myTitleTemplate>
+  <i class="fas fa-spin fa-spinner fa-fw"></i>
+  {{popoverOpenFor}}
+</ng-template>
+<ng-template #myContentTemplate>
+  <i class="fas fa-spin fa-spinner fa-fw"></i>
+  {{time}}
+</ng-template>
+<pre>ngxStrapPopover [popoverTitle]="myTitleTemplate" [popoverContent]="myContentTemplate"</pre>
