@@ -7,25 +7,47 @@
   <code>ngxStrapPopover</code>.
 </p>
 
-<p>
-  <button type="button"
-    class="btn btn-primary mr-2"
-    ngxStrapPopover
-    data-trigger="manual"
-    #popover="ngxStrapPopover"
-    title="Popover Title"
-    data-content="Some popover content.">Button with Popover</button>
-</p>
-<pre>ngxStrapPopover data-trigger="manual" #popover="ngxStrapPopover"</pre>
 
-<p>
-  <button type="button"
-    class="btn btn-secondary btn-sm mr-2"
-    (click)="popover.show()">popover.show()</button>
-  <button type="button"
-    class="btn btn-secondary btn-sm mr-2"
-    (click)="popover.hide()">popover.hide()</button>
-  <button type="button"
-    class="btn btn-secondary btn-sm mr-2"
-    (click)="popover.toggle()">popover.toggle()</button>
-</p>
+
+<div class="row align-items-center mb-4">
+  <div class="col-md-4 text-center mb-2">
+    <button type="button"
+      class="btn btn-primary mr-2"
+      ngxStrapPopover
+      data-trigger="manual"
+      data-placement="top"
+      #popover="ngxStrapPopover"
+      title="Popover Title"
+      data-content="Some popover content.">
+      Manual Popover
+    </button>
+      <div class="mt-2">
+        <button type="button"
+          class="btn btn-secondary btn-sm mr-2"
+          (click)="popover.show()">show()</button>
+        <button type="button"
+          class="btn btn-secondary btn-sm mr-2"
+          (click)="popover.hide()">hide()</button>
+        <button type="button"
+          class="btn btn-secondary btn-sm mr-2"
+          (click)="popover.toggle()">toggle()</button>
+      </div>
+  </div>
+  <div class="col-md-8 mb-2">
+    <markdown ngPreserveWhitespaces>
+    ```html
+    &lt;button type="button"
+      class="btn btn-primary mr-2"
+      ngxStrapPopover
+      data-trigger="manual"
+      data-placement="top"
+      #popover="ngxStrapPopover"
+      title="Popover Title"
+      data-content="Some popover content.">
+      Manual Popover
+    &lt;/button>
+    ```
+    </markdown>
+  </div>
+
+</div>

@@ -1,0 +1,75 @@
+<h6>Minimal Demo</h6>
+
+<p>
+  In a component template, create an <code>ng-template</code>
+  containing Bootstrap modal markup and a button to show the modal.
+</p>
+
+<div class="row align-items-center mb-4" id="tooltip-dismiss-demo">
+  <div class="col-md-4 text-center mb-2">
+    <ng-template #myModal>
+      <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModal1Label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModal1Label">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="modalService.show(myModal)">
+      Show Modal
+    </button>
+
+  </div>
+  <div class="col-md-8 mb-2">
+    <markdown ngPreserveWhitespaces>
+    ```html
+    &lt;ng-template #myModal>
+      &lt;div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModal1Label" aria-hidden="true">
+        &lt;div class="modal-dialog" role="document">
+          &lt;div class="modal-content">
+            &lt;div class="modal-header">
+              &lt;h5 class="modal-title" id="exampleModal1Label">Modal title&lt;/h5>
+              &lt;button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                &lt;span aria-hidden="true">&times;&lt;/span>
+              &lt;/button>
+            &lt;/div>
+            &lt;div class="modal-body">
+              ...
+            &lt;/div>
+            &lt;div class="modal-footer">
+              &lt;button type="button" class="btn btn-secondary" data-dismiss="modal">Close&lt;/button>
+              &lt;button type="button" class="btn btn-primary" data-dismiss="modal">Save changes&lt;/button>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/ng-template>
+    &lt;button
+      type="button"
+      class="btn btn-primary"
+      (click)="modalService.show(myModal)">
+      Show Modal
+    &lt;/button>
+    ```
+    </markdown>
+  </div>
+
+</div>

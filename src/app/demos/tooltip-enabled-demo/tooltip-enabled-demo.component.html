@@ -1,20 +1,40 @@
 <h6>Enabling/Disabling the Tooltip</h6>
-<p class="text-muted">
-  Use the <code>tooltipEnabled</code> input to control whether the tooltip can be shown.
-</p>
 
 <p>
-  <button type="button"
-    class="btn btn-primary"
-    ngxStrapTooltip
-    [tooltipEnabled]="tooltipEnabled"
-    title="Toolitip Title">Button with Tooltip</button>
-    <br>
-     <small>tooltipEnabled: {{tooltipEnabled | json}}</small>
+  Use the <code>tooltipEnabled</code> input to control whether the tooltip should be shown.
 </p>
-<pre>ngxStrapTooltip [tooltipEnabled]="tooltipEnabled"</pre>
-<p>
-  <button type="button"
-    class="btn btn-secondary btn-sm mr-2"
-    (click)="tooltipEnabled = ! tooltipEnabled">Toggle Enabled</button>
-</p>
+
+<div class="row align-items-center mb-4">
+  <div class="col-md-4 text-center mb-2">
+    <button type="button"
+      class="btn btn-primary mb-2"
+      ngxStrapTooltip
+      [tooltipEnabled]="tooltipEnabled"
+      title="Toolitip Title">
+      Tooltip {{tooltipEnabled ? 'Enabled' : 'Disabled'}}
+    </button>
+
+    <div class="mt-2">
+      <button type="button"
+        class="btn btn-secondary btn-sm mr-2"
+        (click)="tooltipEnabled = ! tooltipEnabled">
+        Toggle Enabled
+      </button>
+    </div>
+
+  </div>
+  <div class="col-md-8 mb-2">
+    <markdown ngPreserveWhitespaces>
+    ```html
+    &lt;button type="button"
+      class="btn btn-primary mb-2"
+      ngxStrapTooltip
+      [tooltipEnabled]="tooltipEnabled"
+      title="Toolitip Title">
+      Tooltip {{ '{{' }}tooltipEnabled ? 'Enabled' : 'Disabled'}}
+    &lt;/button>
+    ```
+    </markdown>
+  </div>
+
+</div>

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TooltipDelayDemoComponent } from './tooltip-delay-demo.component';
+import { TooltipDismissDemoComponent } from './tooltip-dismiss-demo.component';
 
-describe('TooltipDelayDemoComponent', () => {
-  let component: TooltipDelayDemoComponent;
-  let fixture: ComponentFixture<TooltipDelayDemoComponent>;
+describe('TooltipDismissDemoComponent', () => {
+  let component: TooltipDismissDemoComponent;
+  let fixture: ComponentFixture<TooltipDismissDemoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TooltipDelayDemoComponent ]
+      declarations: [ TooltipDismissDemoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TooltipDelayDemoComponent);
+    fixture = TestBed.createComponent(TooltipDismissDemoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

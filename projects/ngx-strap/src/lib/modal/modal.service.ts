@@ -80,10 +80,7 @@ export class ModalService {
 
   mergeOptions(opts?: IModalOptions): IModalOptions {
     const baseOptions: IModalOptions = {
-      dismissOnRouteChange: true,
-      backdrop: true,
-      keyboard: true,
-      focus: true
+      dismissOnRouteChange: true
     };
     opts = opts || {};
     return Object.assign({}, baseOptions, opts);

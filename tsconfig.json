@@ -18,11 +18,11 @@
       "dom"
     ],
     "paths": {
-      "ngx-test": [
-        "dist/ngx-test"
+      "@nowzoo/ngx-strap": [
+        "dist/ngx-strap"
       ],
-      "ngx-test/*": [
-        "dist/ngx-test/*"
+      "@nowzoo/ngx-strap/*": [
+        "dist/ngx-strap/*"
       ]
     }
   }

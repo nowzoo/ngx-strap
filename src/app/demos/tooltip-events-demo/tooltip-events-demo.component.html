@@ -1,16 +1,34 @@
 <h6>Tooltip Events</h6>
-<p class="text-muted">
+<p>
   The <code>events</code> output emits the native
-  Bootstrap events.
+  Bootstrap tooltip events.
 </p>
 
-<p>
-  <button type="button"
-    class="btn btn-primary"
-    ngxStrapTooltip
-    (events)="onTooltipEvent($event)"
-    title="Toolitip Title">Events</button>
-    <br>
-     <small>Events: {{events.join(', ')}}</small>
-</p>
-<pre>ngxStrapTooltip (events)="onTooltipEvent($event)"</pre>
+
+<div class="row align-items-center mb-4">
+  <div class="col-md-4 text-center mb-2">
+    <button type="button"
+      class="btn btn-primary"
+      ngxStrapTooltip
+      (events)="onTooltipEvent($event)"
+      title="Toolitip Title">Tooltip Events</button>
+
+      <div class="mt-2 text-left">
+        Events: <small>{{events.join(', ')}}</small>
+      </div>
+  </div>
+  <div class="col-md-8 mb-2">
+    <markdown ngPreserveWhitespaces>
+    ```html
+    &lt;button type="button"
+      class="btn btn-primary"
+      ngxStrapTooltip
+      (events)="onTooltipEvent($event)"
+      title="Toolitip Title">
+      Tooltip Events
+    &lt;/button>
+    ```
+    </markdown>
+  </div>
+
+</div>

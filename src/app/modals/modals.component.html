@@ -1,7 +1,106 @@
+<header class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Modals</h1>
+    <p class="lead">
+      Use the <code>ModalService</code>
+      to display Bootstrap modals from
+      templates.
+    </p>
+  </div>
+</header>
+
 <div class="container">
-  <header>
-    <h1>Modals</h1>
-  </header>
+  <h3>Basic Usage</h3>
+  <p>
+    Import the <code>ModalModule</code> and call <code>ModalModule.forRoot()</code>.
+  </p>
+  <div class="mb-4">
+    <markdown ngPreserveWhitespaces>
+    ```typescript
+    // app.module.ts
+    // ...
+    import {{ '{' }} ModalModule } from '@nowzoo/ngx-strap';
 
+    @NgModule({{ '{' }}
+      imports: [
+        //...
+        ModalModule.forRoot()
+      ]
+    })
+    export class AppModule  {{ '{' }} }
+    ```
+    </markdown>
+  </div>
 
+  <p>
+    Inject <code>ModalService</code> in your component.
+  </p>
+
+  <div class="mb-4">
+    <markdown ngPreserveWhitespaces>
+    ```typescript
+    import {{ '{' }} ModalService } from '@nowzoo/ngx-strap';
+    // ...
+    export class ModalMinimalDemoComponent {{ '{' }}
+      constructor(
+        public modalService: ModalService
+      ) {{ '{' }} }
+    }
+    ```
+    </markdown>
+  </div>
+
+  <h3>API</h3>
+
+  <h4>
+    Service: <code>ModalService</code>
+  </h4>
+  <ul>
+    <li>
+      <code>show(templateRef: TemplateRef&lt;any>, opts?: IModalOptions): IModalInstance</code>
+      <div>
+        Show a modal based on a template.
+      </div>
+    </li>
+  </ul>
+
+  <h4>
+    Interface: <code>IModalInstance</code>
+  </h4>
+  <ul>
+    <li>
+      <code>events: EventEmitter&lt;Event></code>
+      <div>
+        The native Bootstrap modal events.
+      </div>
+    </li>
+    <li>
+      <code>shown: Promise&lt;void></code>
+      <div>
+        Promise that resolves when the modal has been completely shown.
+      </div>
+    </li>
+    <li>
+      <code>hidden: Promise&lt;void></code>
+      <div>
+        Promise that resolves when the modal has been completely hidden.
+      </div>
+    </li>
+    <li>
+      <code>hide: () => Promise&lt;void></code>
+      <div>
+        Method to hide the modal instance.
+      </div>
+    </li>
+    <li>
+      <code>handleUpdate: () => Promise&lt;void></code>
+      <div>
+        Method to readjust the modal’s position if the height of a modal changes while it is open.
+      </div>
+    </li>
+  </ul>
+
+  <h3>Demos</h3>
+
+  <app-modal-minimal-demo></app-modal-minimal-demo>
 </div>

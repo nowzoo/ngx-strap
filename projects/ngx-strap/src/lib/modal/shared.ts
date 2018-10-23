@@ -11,7 +11,4 @@ export interface IModalInstance {
 
 export interface IModalOptions {
   dismissOnRouteChange?: boolean;
-  backdrop?: boolean | 'static';
-  keyboard?: boolean;
-  focus?: boolean;
 }

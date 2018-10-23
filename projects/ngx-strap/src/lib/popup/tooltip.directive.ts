@@ -7,9 +7,19 @@ import { AbstractPopup } from './abstract-popup';
 })
 export class TooltipDirective extends AbstractPopup implements OnInit, OnChanges, OnDestroy {
   @Input() tooltipTitle: string | TemplateRef<any>;
-  @Input() tooltipEnabled = true;
-  @Input() tooltipDismissOnClickOutside = true;
+
+  @Input() tooltipAnimation: boolean;
+  @Input() tooltipHtml: boolean;
   @Input() tooltipDelay: number | {show: number, hide: number} = null;
+  @Input() tooltipContainer: string | HTMLElement | false;
+  @Input() tooltipTemplate: string;
+  @Input() tooltipPlacement: string | ((popupEl: HTMLElement, triggerEl: HTMLElement) => string);
+  @Input() tooltipOffset: number | string;
+  @Input() tooltipFallbackPlacement: string | string[];
+  @Input() tooltipBoundary: string | HTMLElement;
+
+  @Input() tooltipEnabled = true;
+  @Input() tooltipDismissOnClickOutside: boolean;
   popupType: 'tooltip' = 'tooltip';
   constructor(
     elementRef: ElementRef,
@@ -19,24 +29,58 @@ export class TooltipDirective extends AbstractPopup implements OnInit, OnChanges
     super(elementRef, cfr, vcr);
   }
 
-  get popupTitleInput(): string | TemplateRef<any> {
+  get title(): string | TemplateRef<any> {
     return this.tooltipTitle || null;
   }
 
-  get popupContentInput(): string | TemplateRef<any> {
-    return null;
+  get content(): string | TemplateRef<any> {
+    return  null;
   }
 
-  get enabled(): boolean {
-    return this.tooltipEnabled !== false;
+  get animation(): boolean {
+    return this.tooltipAnimation;
+  }
+  get html(): boolean {
+    return this.tooltipHtml;
   }
 
   get delay(): number | {show: number, hide: number} {
     return this.tooltipDelay;
   }
 
+
+  get container(): string | HTMLElement | false {
+    return this.tooltipContainer;
+  }
+
+
+  get placement(): string | ((popupEl: HTMLElement, triggerEl: HTMLElement) => string) {
+    return this.tooltipPlacement;
+  }
+
+  get template(): string {
+    return this.tooltipTemplate;
+  }
+
+
+  get offset(): number | string {
+    return this.tooltipOffset;
+  }
+
+  get fallbackPlacement(): string | string[] {
+    return this.tooltipFallbackPlacement;
+  }
+
+  get boundary(): string | HTMLElement {
+    return this.tooltipBoundary;
+  }
+
+  get enabled(): boolean {
+    return this.tooltipEnabled !== false;
+  }
+
   get dismissOnClickOutside(): boolean {
-    return this.tooltipDismissOnClickOutside;
+    return this.tooltipDismissOnClickOutside === true;
   }
 
   ngOnChanges(changes: SimpleChanges) {

@@ -1,8 +1,7 @@
 import {
-  Directive, OnInit, SimpleChanges, OnDestroy, Input, Output, EventEmitter,
+  OnInit, OnDestroy, Output, EventEmitter,
   TemplateRef, ElementRef, ComponentRef, ViewContainerRef, ComponentFactoryResolver
 } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
 import { PopupPlaceholderComponent } from './popup-placeholder/popup-placeholder.component';
 
 declare const jQuery: any;
@@ -13,20 +12,76 @@ export abstract class AbstractPopup implements OnInit, OnDestroy {
   @Output() events: EventEmitter<Event> = new EventEmitter();
 
   abstract popupType: 'popover' | 'tooltip';
-  abstract enabled: boolean;
-  abstract popupTitleInput: string | TemplateRef<any>;
-  abstract popupContentInput: string | TemplateRef<any>;
+
+  abstract title: string | TemplateRef<any>;
+  abstract content: string | TemplateRef<any>;
+  abstract animation: boolean;
+  abstract html: boolean;
   abstract delay: number | {show: number, hide: number};
+  abstract container: string | HTMLElement | false;
+  abstract placement: string | ((popupEl: HTMLElement, triggerEl: HTMLElement) => string);
+  abstract template: string;
+  abstract offset: number | string;
+  abstract fallbackPlacement: string | string[];
+  abstract boundary: string | HTMLElement;
+
+  abstract enabled: boolean;
   abstract dismissOnClickOutside: boolean;
+
   titleComponentRef: ComponentRef<PopupPlaceholderComponent> = null;
   contentComponentRef: ComponentRef<PopupPlaceholderComponent> = null;
-  dismissOnClickOutsideListener: any = null;
   bsEventListener: any = null;
+  clickDismissListener: any = null;
   constructor(
     private _elementRef: ElementRef,
     private _cfr: ComponentFactoryResolver,
     private _vcr: ViewContainerRef,
   ) { }
+
+  get options(): any {
+    const options: any = {};
+    if (typeof this.animation === 'boolean') {
+      options.animation = this.animation;
+    }
+    if (typeof this.html === 'boolean') {
+      options.html = this.html;
+    }
+    if ((typeof this.delay === 'number') || (typeof this.delay === 'object')) {
+      options.delay = this.delay;
+    }
+    if (this.container) {
+      options.container = this.container;
+    }
+    if (typeof this.template === 'string') {
+      options.template = this.template;
+    }
+    if ((typeof this.placement === 'string') || (typeof this.placement === 'function')) {
+      options.placement = this.placement;
+    }
+    if ((typeof this.offset === 'number') || (typeof this.offset === 'string')) {
+      options.offset = this.offset;
+    }
+    if ((typeof this.fallbackPlacement === 'string') || Array.isArray(this.fallbackPlacement)) {
+      options.fallbackPlacement = this.fallbackPlacement;
+    }
+    if (this.boundary) {
+      options.boundary = this.boundary;
+    }
+    if (this.title) {
+      this.titleComponentRef = this.getPlaceholderComponent();
+      this.titleComponentRef.instance.inserted = this.title;
+      options.title = this.titleComponentRef.instance.insertedContent.nativeElement;
+      options.html = true;
+    }
+    if (this.content) {
+      this.contentComponentRef = this.getPlaceholderComponent();
+      this.contentComponentRef.instance.inserted = this.content;
+      options.title = this.contentComponentRef.location.nativeElement;
+      options.content = this.contentComponentRef.instance.insertedContent.nativeElement;
+      options.html = true;
+    }
+    return options;
+  }
 
   get cfr(): ComponentFactoryResolver {
     return this._cfr;
@@ -58,14 +113,16 @@ export abstract class AbstractPopup implements OnInit, OnDestroy {
 
 
   updateTitle() {
-    if (this.titleComponentRef && this.popupTitleInput) {
-      this.titleComponentRef.instance.inserted = this.popupTitleInput;
+    if (this.titleComponentRef && this.title) {
+      this.titleComponentRef.instance.inserted = this.title;
+      this.update();
     }
   }
 
   updateContent() {
-    if (this.contentComponentRef && this.popupContentInput) {
-      this.contentComponentRef.instance.inserted = this.popupContentInput;
+    if (this.contentComponentRef && this.content) {
+      this.contentComponentRef.instance.inserted = this.content;
+      this.update();
     }
   }
 
@@ -83,10 +140,9 @@ export abstract class AbstractPopup implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.$el[this.popupType]('dispose');
-    this.$el.off(this.jQueryEvents);
-    if (this.dismissOnClickOutsideListener) {
-      jQuery(document.body).off('click', this.dismissOnClickOutsideListener);
-      this.dismissOnClickOutsideListener = null;
+    this.$el.off(this.jQueryEvents, this.bsEventListener);
+    if (this.clickDismissListener) {
+      jQuery('body').off('click focusin', this.clickDismissListener);
     }
     if (this.titleComponentRef) {
       this.titleComponentRef.destroy();
@@ -96,60 +152,26 @@ export abstract class AbstractPopup implements OnInit, OnDestroy {
     }
   }
 
-  setDismissOnClickOutsideListener(event: Event) {
-    if (this.dismissOnClickOutsideListener) {
-      jQuery(document.body).off('click', this.dismissOnClickOutsideListener);
-      this.dismissOnClickOutsideListener = null;
-    }
-    if (! this.dismissOnClickOutside) {
-      return;
-    }
 
-    this.dismissOnClickOutsideListener = (clickEvent) => {
-      const tip: HTMLElement = this.bsInstance.tip;
-      if (tip.contains(clickEvent.target)) {
-        return;
-      }
-      if (clickEvent === event) {
-        return;
-      }
-      this.hide();
-      jQuery(document.body).off('click', this.dismissOnClickOutsideListener);
-      this.dismissOnClickOutsideListener = null;
-    };
-    jQuery(document.body).on('click', this.dismissOnClickOutsideListener);
-
-  }
 
   create() {
     this.bsEventListener = (event) => {
-      switch (event.type) {
-        case 'shown':
-          this.setDismissOnClickOutsideListener(event);
-          break;
+      if (this.dismissOnClickOutside && event.type === 'shown' ) {
+        this.clickDismissListener = (clickEvent) => {
+          if (this.bsInstance.tip.contains(clickEvent.target)) {
+            return;
+          }
+          jQuery('body').off('click focusin', this.clickDismissListener);
+          this.clickDismissListener = null;
+          this.hide();
+        };
+        jQuery('body').on('click focusin', this.clickDismissListener);
       }
       this.events.emit(event);
     };
     this.$el.on(this.jQueryEvents, this.bsEventListener);
-    const options: any = {};
-    if (this.popupContentInput) {
-      this.contentComponentRef = this.getPlaceholderComponent();
-      this.contentComponentRef.instance.inserted = this.popupContentInput;
-      options.title = this.contentComponentRef.location.nativeElement;
-      options.content = this.contentComponentRef.instance.insertedContent.nativeElement;
-      options.html = true;
-    }
-    if (this.popupTitleInput) {
-      this.titleComponentRef = this.getPlaceholderComponent();
-      this.titleComponentRef.instance.inserted = this.popupTitleInput;
-      options.title = this.titleComponentRef.instance.insertedContent.nativeElement;
-      options.html = true;
-    }
-    if (this.delay) {
-      options.delay = this.delay;
-    }
     // this.detachComponents();
-    this.$el[this.popupType](options);
+    this.$el[this.popupType](this.options);
 
     this.updateEnabled();
   }
@@ -158,8 +180,6 @@ export abstract class AbstractPopup implements OnInit, OnDestroy {
     const factory = this.cfr.resolveComponentFactory(PopupPlaceholderComponent);
     return this.vcr.createComponent(factory, 0);
   }
-
-
 
   show() {
     this.$el[this.popupType]('show');
@@ -188,6 +208,5 @@ export abstract class AbstractPopup implements OnInit, OnDestroy {
   update() {
     this.$el[this.popupType]('update');
   }
-
 
 }

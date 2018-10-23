@@ -1,0 +1,49 @@
+<h6>Dismiss on Click Outside</h6>
+
+<p>
+  Use <code>[tooltipDismissOnClickOutside]="true"</code>
+  to dismiss the tooltip when the user clicks or focuses anywhere other
+  than on the tooltip itself.
+</p>
+
+<div class="row align-items-center mb-4" id="tooltip-dismiss-demo">
+  <div class="col-md-4 text-center mb-2">
+    <button type="button"
+      class="btn btn-primary mb-2"
+      ngxStrapTooltip
+      data-trigger="click"
+      [tooltipDismissOnClickOutside]="true"
+      [tooltipTitle]="myTemplate">
+      Tooltip (click)
+    </button>
+    <div class="mt-2 text-left">
+      <a href="javascript: void(0)">Link</a>
+      <br>
+      <input type="text" class="form-control form-control-sm" placeholder="Input to focus">
+    </div>
+
+  </div>
+  <div class="col-md-8 mb-2">
+    <markdown ngPreserveWhitespaces>
+    ```html
+    &lt;button type="button"
+      class="btn btn-primary mb-2"
+      ngxStrapTooltip
+      data-trigger="click"
+      [tooltipDismissOnClickOutside]="true"
+      [tooltipTitle]="myTemplate">
+      tooltipDismissOnClickOutside: true
+    &lt;/button>
+    ```
+    </markdown>
+  </div>
+
+</div>
+
+<ng-template #myTemplate>
+  <a href="javascript: void(0)" class="text-light">Link to click</a>.
+  <br>
+  <input type="text" class="form-control form-control-sm" placeholder="Input to focus">
+  <br>
+  Interacting with these elements will not dismiss the tooltip.
+</ng-template>

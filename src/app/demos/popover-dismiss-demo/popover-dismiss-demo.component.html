@@ -1,29 +1,59 @@
 <h6>Dismiss on Click Outside</h6>
+
 <p class="text-muted">
-  To allow clicks within the popover without dismissing it, but
-  dismiss it on a click outside, use
-   <code>[popoverDismissOnClickOutside]="true"</code>
+  Use <code>[popoverDismissOnClickOutside]="true"</code>
+  to dismiss the popover when the user clicks or focuses anywhere other
+  than on the popover element itself.
 </p>
 
-<p>
-  <button type="button"
-    class="btn btn-primary"
-    ngxStrapPopover
-    #popover="ngxStrapPopover"
-    [popoverDismissOnClickOutside]="true"
-    [popoverTitle]="myTitle"
-    [popoverContent]="myContent">Dismiss on Click Outside the Popover</button>
-
-</p>
-<pre>ngxStrapPopover [popoverDismissOnClickOutside]="true"</pre>
-<ng-template #myContent>
-  A click inside the popover will not dismiss it. A click outside of it will.
-  <a  href="https://google.com" target="_blank">Try It</a>
-</ng-template>
-
-<ng-template #myTitle>
-  <div class="d-flex justify-content-between align-items-center">
-    <span>Popover Title</span>
-    <button type="button" class="close" (click)="popover.hide()">&times;</button>
+<div class="row align-items-center mb-4" id="tooltip-dismiss-demo">
+  <div class="col-md-4 text-center mb-2">
+    <button type="button"
+      class="btn btn-primary mb-2"
+      ngxStrapPopover
+      [popoverDismissOnClickOutside]="true"
+      title="Dismiss on Click Outside: True"
+      [popoverContent]="myTemplate">
+      Popover
+    </button>
+    <div class="text-muted small">
+      Clicking or focusing elements outside this popover
+      <strong>will</strong> hide it.
+    </div>
+    <div class="mt-2 text-left">
+      <a href="javascript: void(0)">Link</a>
+      <br>
+      <input type="text" class="form-control form-control-sm" placeholder="Input to focus">
+    </div>
   </div>
+  <div class="col-md-8 mb-2">
+    <markdown ngPreserveWhitespaces>
+    ```html
+    &lt;button type="button"
+      class="btn btn-primary mb-2"
+      ngxStrapPopover
+      [popoverDismissOnClickOutside]="true"
+      title="Dismiss on Click Outside: True"
+      [popoverContent]="myTemplate">
+      Popover
+    &lt;/button>
+    ```
+    </markdown>
+  </div>
+
+</div>
+
+<ng-template #myTemplate>
+  <p>
+    <a href="javascript: void(0)">Link to click</a>.
+  </p>
+
+  <p>
+      <input type="text" class="form-control form-control-sm" placeholder="Input to focus">
+  </p>
+
+  <p class="text-muted">
+    Interacting with these elements will not dismiss the popover.
+  </p>
+
 </ng-template>
