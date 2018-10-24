@@ -2,9 +2,9 @@
   <div class="container">
     <h1 class="display-4">Modals</h1>
     <p class="lead">
-      Use the <code>ModalService</code>
-      to display Bootstrap modals from
-      templates.
+      Use the <code>ngxStrapModal</code> directive
+      with an <code>ng-template</code>
+      to create a Bootstrap modal.
     </p>
   </div>
 </header>
@@ -12,7 +12,8 @@
 <div class="container">
   <h3>Basic Usage</h3>
   <p>
-    Import the <code>ModalModule</code> and call <code>ModalModule.forRoot()</code>.
+    Import the <code>ModalModule</code>.
+    This module exports the modal directive.
   </p>
   <div class="mb-4">
     <markdown ngPreserveWhitespaces>
@@ -24,48 +25,85 @@
     @NgModule({{ '{' }}
       imports: [
         //...
-        ModalModule.forRoot()
+        ModalModule
       ]
     })
     export class AppModule  {{ '{' }} }
     ```
     </markdown>
   </div>
-
   <p>
-    Inject <code>ModalService</code> in your component.
+    Create a modal with an <code>ng-template</code> and the <code>[ngxStrapModal]</code> selector.
   </p>
-
   <div class="mb-4">
     <markdown ngPreserveWhitespaces>
-    ```typescript
-    import {{ '{' }} ModalService } from '@nowzoo/ngx-strap';
-    // ...
-    export class ModalMinimalDemoComponent {{ '{' }}
-      constructor(
-        public modalService: ModalService
-      ) {{ '{' }} }
-    }
+    ```html
+    &lt;ng-template ngxStrapModal #modal="ngxStrapModal">
+      &lt;!-- Complete Bootstrap modal markup here -->
+    &lt;/ng-template>
+    &lt;button (click)="modal.show()">Show Modal&lt;/button>
     ```
     </markdown>
   </div>
 
-  <h3>API</h3>
+  <h3>Directive API</h3>
 
-  <h4>
-    Service: <code>ModalService</code>
-  </h4>
   <ul>
-    <li>
-      <code>show(templateRef: TemplateRef&lt;any>, opts?: IModalOptions): IModalInstance</code>
-      <div>
-        Show a modal based on a template.
-      </div>
-    </li>
+    <li>Selector: <code>[ngxStrapModal]</code></li>
+    <li>Export As: <code>ngxStrapModal</code></li>
   </ul>
 
   <h4>
-    Interface: <code>IModalInstance</code>
+    Inputs
+  </h4>
+
+  <p>
+    None. All Bootstrap modal options can be set
+    in the markup you place inside the <code>ng-template</code>,
+    via the native Bootstrap <code>data-</code> attributes and
+    classes.
+  </p>
+
+  <ul>
+    <li>
+
+      <a href="http://getbootstrap.com/docs/4.1/components/modal/#options" target="bsdocs">Bootstrap modal options</a>
+      (except <code>show</code>) can be set via <code>data-</code>
+      attributes in the top-level <code>&lt;div class="modal"></code>.
+      <ul>
+        <li>
+          backdrop: <code>data-backdrop</code>
+        </li>
+        <li>
+          keyboard: <code>data-keyboard</code>
+        </li>
+        <li>
+          focus: <code>data-focus</code>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="http://getbootstrap.com/docs/4.1/components/modal/#remove-animation" target="bsdocs">Animation</a>
+      is controlled by adding or omitting the <code>fade</code>
+      class in the top-level <code>&lt;div class="modal"></code>.
+    </li>
+    <li>
+      <a href="http://getbootstrap.com/docs/4.1/components/modal/#optional-sizes" target="bsdocs">Modal size</a>
+      is controlled by adding the <code>modal-lg</code> or <code>modal-sm</code>
+      classes to the <code>&lt;div class="modal-dialog"></code> element.
+    </li>
+    <li>
+      You can
+      <a href="http://getbootstrap.com/docs/4.1/components/modal/#vertically-centered" target="bsdocs">center
+      the dialog vertically</a> in the viewport by adding
+      adding the <code>modal-dialog-centered</code>
+      class to the <code>&lt;div class="modal-dialog"></code> element.
+    </li>
+  </ul>
+
+
+  <h4>
+    Outputs
   </h4>
   <ul>
     <li>
@@ -74,33 +112,46 @@
         The native Bootstrap modal events.
       </div>
     </li>
+  </ul>
+
+  <h4>
+    Methods
+  </h4>
+
+  <ul>
     <li>
-      <code>shown: Promise&lt;void></code>
+      <code>show(): {{ '{' }}shown: Promise&lt;void>, hidden: Promise&lt;void>}</code>
       <div>
-        Promise that resolves when the modal has been completely shown.
+        Shows the modal. The <code>shown</code> and <code>hidden</code>
+        promises resolve when the modal is completely shown or hidden (i.e. after the animation completes.)
       </div>
     </li>
     <li>
-      <code>hidden: Promise&lt;void></code>
+      <code>hide(): &lt;void></code>
       <div>
-        Promise that resolves when the modal has been completely hidden.
+        Hides the modal.
       </div>
     </li>
     <li>
-      <code>hide: () => Promise&lt;void></code>
+      <code>handleUpdate(): &lt;void></code>
       <div>
-        Method to hide the modal instance.
-      </div>
-    </li>
-    <li>
-      <code>handleUpdate: () => Promise&lt;void></code>
-      <div>
-        Method to readjust the modal’s position if the height of a modal changes while it is open.
+        Use this when the height of the modal content changes.
+        See <a href="http://getbootstrap.com/docs/4.1/components/modal/#dynamic-heights" target="bsdocs">the
+          Bootstrap docs</a>.
       </div>
     </li>
   </ul>
 
+
+
+
+
+
+
+
   <h3>Demos</h3>
 
   <app-modal-minimal-demo></app-modal-minimal-demo>
+
+  <app-modal-events-demo></app-modal-events-demo>
 </div>

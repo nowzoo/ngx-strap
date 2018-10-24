@@ -25,6 +25,7 @@ import { ModalsComponent } from './modals/modals.component';
 import { TooltipDismissDemoComponent } from './demos/tooltip-dismiss-demo/tooltip-dismiss-demo.component';
 import { PopoverDismissDemoComponent } from './demos/popover-dismiss-demo/popover-dismiss-demo.component';
 import { ModalMinimalDemoComponent } from './demos/modal-minimal-demo/modal-minimal-demo.component';
+import { ModalEventsDemoComponent } from './demos/modal-events-demo/modal-events-demo.component';
 
 const routes: Routes = [
   {path: 'modals', component: ModalsComponent},
@@ -58,14 +59,15 @@ const routes: Routes = [
     PopoverShowHideToggleDemoComponent,
     PopoverEnabledDemoComponent,
     ModalMinimalDemoComponent,
+    ModalEventsDemoComponent,
 
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     PopupModule,
+    ModalModule,
     MarkdownModule.forRoot({ loader: HttpClient }),
-    ModalModule.forRoot(),
     RouterModule.forRoot(routes, {useHash: true})
   ],
   providers: [],
