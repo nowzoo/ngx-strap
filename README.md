@@ -1,6 +1,6 @@
 # ngx-strap
 
-Angular components and directives for Bootstrap. Unlike other Angular/Bootstrap libraries, ngx-strap leverages native Bootstrap javascript and css rather than recreating Bootstrap from scratch "the Angular way."
+Angular directives for Bootstrap. Unlike other Angular/Bootstrap libraries, `ngx-strap` leverages native Bootstrap javascript and css rather than recreating Bootstrap from scratch "the Angular way."
 
 This means the library depends on `bootstrap.js` and its dependencies. If the statement `declare const jQuery: any` gives you agita, you should probably look elsewhere.
 
