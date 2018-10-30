@@ -32,6 +32,21 @@ Install the library and its dependencies (jQuery, popper.js and bootstrap).
 ```bash
 npm i --save @nowzoo/ngx-strap jquery popper.js bootstrap
 ```
+Include Bootstrap and its dependencies in your build.
+The best way to do this is to add the scripts and css in `angular.json`.
+
+```json
+// angular.json
+"styles": [
+  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "src/styles.css"
+],
+"scripts": [
+  "node_modules/jquery/dist/jquery.slim.js",
+  "node_modules/popper.js/dist/umd/popper.min.js",
+  "node_modules/bootstrap/dist/js/bootstrap.min.js"
+]
+```
 
 See below for how to import the individual modules.
 
