@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-tooltips',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TooltipsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private title: Title
+  ) { }
 
-  ngOnInit() {  }
+  ngOnInit() {
+    this.title.setTitle('Tooltips | @nowzoo/ngx-strap');
+  }
 
 }

@@ -1,9 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MarkdownModule } from 'ngx-markdown';
-import { PopupModule, ModalModule } from '@nowzoo/ngx-strap';
+import { ModalModule } from '@nowzoo/ngx-strap';
+import { CollapseModule } from './mod/collapse/collapse.module';
+import { TabsModule } from './mod/tabs/tabs.module';
+import { AccordianModule } from './accordian/accordian.module';
+import { PopupModule, } from './popup/popup.module';
+import { DropdownModule, } from './mod/dropdown/dropdown.module';
+
 import { AppComponent } from './app.component';
 import { TooltipMinimalDemoComponent } from './demos/tooltip-minimal-demo/tooltip-minimal-demo.component';
 import { TooltipDynamicStringDemoComponent } from './demos/tooltip-dynamic-string-demo/tooltip-dynamic-string-demo.component';
@@ -26,11 +34,29 @@ import { TooltipDismissDemoComponent } from './demos/tooltip-dismiss-demo/toolti
 import { PopoverDismissDemoComponent } from './demos/popover-dismiss-demo/popover-dismiss-demo.component';
 import { ModalMinimalDemoComponent } from './demos/modal-minimal-demo/modal-minimal-demo.component';
 import { ModalEventsDemoComponent } from './demos/modal-events-demo/modal-events-demo.component';
+import { CollapseComponent } from './collapse/collapse.component';
+import { CollapseMinimalDemoComponent } from './collapse/collapse-minimal-demo/collapse-minimal-demo.component';
+
+
+import { ListGroupAccordianComponent } from './list-group-accordian/list-group-accordian.component';
+import { ModalPromisesDemoComponent } from './demos/modal-promises-demo/modal-promises-demo.component';
+import { TabsComponent } from './tabs/tabs.component';
+import { TabsListGroupDemoComponent } from './tabs/demos/tabs-list-group-demo/tabs-list-group-demo.component';
+import { TabsMinimalDemoComponent } from './tabs/demos/tabs-minimal-demo/tabs-minimal-demo.component';
+import { TabsPillsDemoComponent } from './tabs/demos/tabs-pills-demo/tabs-pills-demo.component';
+import { TabsPlainDemoComponent } from './tabs/demos/tabs-plain-demo/tabs-plain-demo.component';
+import { DropdownsComponent } from './dropdowns/dropdowns.component';
+import { DropdownBasicDemoComponent } from './dropdowns/dropdown-basic-demo/dropdown-basic-demo.component';
+import { DropdownEventsDemoComponent } from './dropdowns/dropdown-events-demo/dropdown-events-demo.component';
+import { CollapseEventsDemoComponent } from './collapse/collapse-events-demo/collapse-events-demo.component';
 
 const routes: Routes = [
+  {path: 'dropdowns', component: DropdownsComponent},
   {path: 'modals', component: ModalsComponent},
   {path: 'tooltips', component: TooltipsComponent},
   {path: 'popovers', component: PopoversComponent},
+  {path: 'collapse', component: CollapseComponent},
+  {path: 'tabs', component: TabsComponent},
   {path: '', component: IndexComponent},
 ];
 
@@ -48,6 +74,7 @@ const routes: Routes = [
 
     TooltipsComponent,
     ModalsComponent,
+
     TooltipDismissDemoComponent,
 
     PopoversComponent,
@@ -60,13 +87,36 @@ const routes: Routes = [
     PopoverEnabledDemoComponent,
     ModalMinimalDemoComponent,
     ModalEventsDemoComponent,
+    CollapseComponent,
+    CollapseMinimalDemoComponent,
 
+    ListGroupAccordianComponent,
+
+    ModalPromisesDemoComponent,
+
+    TabsComponent,
+
+    TabsListGroupDemoComponent,
+
+    TabsMinimalDemoComponent,
+
+    TabsPillsDemoComponent,
+    TabsPlainDemoComponent,
+    DropdownsComponent,
+    DropdownBasicDemoComponent,
+    DropdownEventsDemoComponent,
+    CollapseEventsDemoComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     PopupModule,
     ModalModule,
+    CollapseModule,
+    TabsModule,
+    DropdownModule,
+    AccordianModule,
     MarkdownModule.forRoot({ loader: HttpClient }),
     RouterModule.forRoot(routes, {useHash: true})
   ],

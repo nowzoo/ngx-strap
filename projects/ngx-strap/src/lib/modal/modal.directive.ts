@@ -1,4 +1,4 @@
-import { Directive, OnInit, OnDestroy, TemplateRef, ApplicationRef, EmbeddedViewRef, Output, EventEmitter } from '@angular/core';
+import { Directive, OnDestroy, TemplateRef, ApplicationRef, EmbeddedViewRef, Output, EventEmitter } from '@angular/core';
 import { filter, take } from 'rxjs/operators';
 declare const jQuery: any;
 
@@ -6,7 +6,7 @@ declare const jQuery: any;
   selector: '[ngxStrapModal]',
   exportAs: 'ngxStrapModal'
 })
-export class ModalDirective implements OnInit, OnDestroy {
+export class ModalDirective implements OnDestroy {
 
   @Output() events: EventEmitter<Event> = new EventEmitter();
   $el: any;
@@ -23,9 +23,6 @@ export class ModalDirective implements OnInit, OnDestroy {
 
   get templateRef(): TemplateRef<any> {
     return this._templateRef;
-  }
-  ngOnInit() {
-    console.log(this._templateRef);
   }
 
   ngOnDestroy() {

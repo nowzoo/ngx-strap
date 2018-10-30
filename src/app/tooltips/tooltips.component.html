@@ -41,25 +41,24 @@
     &lt;button type="button"
       class="btn btn-primary"
       ngxStraptooltip
-      title="tooltip Title"&gt;tooltip&lt;/button&gt;
+      title="Tooltip Title"&gt;Tooltip&lt;/button&gt;
     ```
     </markdown>
   </div>
 
-  <h3>API</h3>
+  <h3>Directive API</h3>
 
-  <ul class="list-unstyled">
+  <ul>
     <li>
-      Selector: <code>'[ngxStraptooltip]'</code>
+      Selector: <code>[ngxStraptooltip]</code>
     </li>
     <li>
-      Export As: <code>'ngxStraptooltip'</code>
+      Export As: <code>ngxStraptooltip</code>
     </li>
   </ul>
 
 
   <h4>Inputs</h4>
-  <h6>Title and Content</h6>
   <ul>
     <li>
        <code>tooltipTitle: string | TemplateRef&lt;any&gt;</code>
@@ -77,13 +76,30 @@
          or <code>data-content</code> attribute.
        </div>
     </li>
+    <li>
+      <code>tooltipEnabled: boolean</code>
+      <div>
+        Optional. Default <code>true</code>. Enable/disable the tooltip.
+      </div>
+    </li>
+
+    <li>
+      <code>tooltipDismissOnClickOutside: boolean</code>
+      <div>
+        Optional. Use this to hide the
+        tooltip when the user clicks or
+        focuses anywhere outside the tooltip itself.
+      </div>
+    </li>
   </ul>
-  <h6>Other Bootstrap tooltip Options</h6>
+  <h6>Other Bootstrap Tooltip Options</h6>
   <p>
     All the other
     <a href="http://getbootstrap.com/docs/4.1/components/tooltips/#options" target="bsdocs">Bootstrap tooltip options</a>
-    except <code>selector</code> have analogous directive inputs.
-    Note that the following options can only be set once, when the directive is created.
+    except <code>selector</code> can either be set via <code>data-</code>
+    attributes or by their analogous directive inputs.
+    Note that even if you use the directive inputs, the following options are only
+    set once, when the directive is created.
   </p>
   <ul>
     <li>
@@ -152,24 +168,7 @@
       </div>
     </li>
   </ul>
-  <h6>Other Inputs</h6>
-  <ul>
-    <li>
-      <code>tooltipEnabled: boolean</code>
-      <div>
-        Optional. Default <code>true</code>. Enable/disable the tooltip.
-      </div>
-    </li>
 
-    <li>
-      <code>tooltipDismissOnClickOutside: boolean</code>
-      <div>
-        Optional. Use this to hide the
-        tooltip when the user clicks or
-        focuses anywhere outside the tooltip itself.
-      </div>
-    </li>
-  </ul>
 
 
 
@@ -212,5 +211,15 @@
 
   <app-tooltip-minimal-demo></app-tooltip-minimal-demo>
 
-  
+  <app-tooltip-dynamic-string-demo></app-tooltip-dynamic-string-demo>
+
+  <app-tooltip-template-demo></app-tooltip-template-demo>
+
+  <app-tooltip-enabled-demo></app-tooltip-enabled-demo>
+
+  <app-tooltip-dismiss-demo></app-tooltip-dismiss-demo>
+
+  <app-tooltip-events-demo></app-tooltip-events-demo>
+
+  <app-tooltip-show-hide-toggle-demo></app-tooltip-show-hide-toggle-demo>
 </div>

@@ -1,0 +1,74 @@
+<header class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Collapse</h1>
+    <p class="lead">
+      Directive: <code>ngxStrapCollapse</code>
+    </p>
+  </div>
+</header>
+
+<div class="container page">
+  <section class="page-section">
+
+    <h4>API</h4>
+    <ul>
+      <li>selector: <code>[ngxStrapCollapse]</code></li>
+      <li>exportAs: <code>ngxStrapCollapse</code></li>
+    </ul>
+    <h5>Inputs</h5>
+    <ul>
+      <li>
+        <code>ngxStrapCollapse: boolean</code> Whether the collapse should be shown.
+      </li>
+    </ul>
+    <h5>Outputs</h5>
+    <ul>
+      <li>
+        <code>events: EventEmitter&lt;Event&gt;</code> The native Bootstrap collapse events.
+      </li>
+    </ul>
+    <h5>Properties</h5>
+    <ul>
+      <li>
+        <code>status: 'hidden' | 'show' | 'shown' | 'hide'</code> The current status of the collapse
+        (the last event's <code>type</code>.)
+      </li>
+    </ul>
+  </section>
+
+  <section class="page-section">
+    <h4>Demos</h4>
+    <section class="demo-section">
+      <h5>Basic Demo</h5>
+      <section class="demo">
+        <app-collapse-minimal-demo></app-collapse-minimal-demo>
+      </section>
+
+
+      <section class="code">
+        <markdown src="/assets/collapse-minimal-demo.md"></markdown>
+      </section>
+
+
+    </section>
+    <section class="demo-section">
+      <h5>Collapse Events and Status</h5>
+      <section class="demo">
+        <app-collapse-events-demo></app-collapse-events-demo>
+      </section>
+      <p>
+        The directive exposes the native Bootstrap
+        <a href="https://getbootstrap.com/docs/4.1/components/collapse/#events"
+          target="bsdocs">collapse events</a> through the <code>events</code>
+          output. The current status of the collapse is available through the
+          <code>status</code> property. This is one of <code>'hidden'</code>,
+          <code>'show'</code>, <code>'shown'</code> or <code>'hide'</code>.
+      </p>
+
+      <section class="code">
+        <markdown src="/assets/collapse-events-demo.md"></markdown>
+      </section>
+    </section>
+
+  </section>
+</div>

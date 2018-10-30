@@ -1,0 +1,55 @@
+<h6>Modal Events</h6>
+<p class="text-muted">
+  The <code>show()</code> method returns an object
+  containing <code>shown</code> and <code>hidden</code> promises.
+</p>
+
+
+<div class="row align-items-center mb-4">
+  <div class="col-md-4 text-center mb-2">
+    <ng-template
+      ngxStrapModal
+      #modal="ngxStrapModal">
+      <div class="modal fade" id="exampleModalEvents" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalEventsLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalEventsLabel">Modal Events</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Hello there.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <button type="button"
+      class="btn btn-primary"
+      (click)="showModal()">
+      Open Modal
+    </button>
+    <div class="mt-2 text-left">
+      Resolved:
+      <small>{{resolvedPromises.join(', ')}}</small>
+    </div>
+  </div>
+  <div class="col-md-8 mb-2">
+    <markdown ngPreserveWhitespaces>
+    ```typescript
+    showModal() {{ '{' }}
+      const modalPromises = this.modal.show();
+      modalPromises.shown.then(() => this.resolvedPromises.push('shown'));
+      modalPromises.hidden.then(() => this.resolvedPromises.push('hidden'));
+    }
+    ```
+    </markdown>
+  </div>
+
+</div>

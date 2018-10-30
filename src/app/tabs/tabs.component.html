@@ -1,0 +1,306 @@
+<header class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Tabs</h1>
+    <p class="lead">
+      Use the <code>ngx-strap-tabs</code> and <code>ngx-strap-tab</code> components  to create
+      tabsets in a variety of flavors.
+    </p>
+  </div>
+</header>
+
+<div class="container">
+
+  <section class="my-5">
+    <h4>Basic Demo</h4>
+    <p>
+      Set the tab title either with the <code>tabTitle</code> input or
+      a template:
+      <code>&lt;ng-template #ngxStrapTabTitle>My Tab Title&lt;/ng-template></code>.
+      Individual tabs can be disabled using <code>[tabDisabled]="true"</code>.
+    </p>
+    <markdown ngPreserveWhitespaces>
+    ```html
+    &lt;ngx-strap-tabs&gt;
+      &lt;ngx-strap-tab tabTitle="Tab 1"&gt;
+        Tab 1 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      &lt;/ngx-strap-tab&gt;
+      &lt;ngx-strap-tab&gt;
+        &lt;ng-template #ngxStrapTabTitle&gt;
+          Template Title
+        &lt;/ng-template&gt;
+        Tab 2 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      &lt;/ngx-strap-tab&gt;
+      &lt;ngx-strap-tab tabTitle="Disabled" [tabDisabled]="true"&gt;
+        Tab 3 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      &lt;/ngx-strap-tab&gt;
+    &lt;/ngx-strap-tabs&gt;
+    ```
+    </markdown>
+    <section class="my-4">
+      <ngx-strap-tabs>
+        <ngx-strap-tab tabTitle="Tab 1">
+          Tab 1 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+        <ngx-strap-tab>
+          <ng-template #ngxStrapTabTitle>
+            Template Title
+          </ng-template>
+          Tab 2 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+        <ngx-strap-tab tabTitle="Disabled" [tabDisabled]="true">
+          Tab 3 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+      </ngx-strap-tabs>
+    </section>
+  </section>
+
+  <hr>
+  <section class="my-5">
+    <h4>Setting the Initally Shown Tab</h4>
+    <p>
+      By default the first tab is shown initially. Use <code>initialTab</code> to show a different tab. Note that the tabs
+      use 0-based indexing.
+    </p>
+    <markdown ngPreserveWhitespaces>
+    ```html
+    &lt;ngx-strap-tabs [initialTab]="1"&gt;...&lt;/ngx-strap-tabs&gt;
+    ```
+    </markdown>
+    <section class="my-4">
+      <ngx-strap-tabs [initialTab]="1" #initialDemo="ngxStrapTabs" (shownTab)="onShownTab($event)">
+        <ngx-strap-tab tabTitle="Tab 1">
+          Tab 1 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+        <ngx-strap-tab>
+          <ng-template #ngxStrapTabTitle>
+            Template Title
+          </ng-template>
+          Tab 2 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+        <ngx-strap-tab tabTitle="Disabled" [tabDisabled]="true">
+          Tab 3 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+      </ngx-strap-tabs>
+        <p>Shown Tab: {{ initialDemo.shownTab | async }}</p>
+    </section>
+  </section>
+  <hr>
+  <section class="my-5">
+    <h4>Events</h4>
+    <section class="my-4">
+      <ngx-strap-tabs #eventsDemo="ngxStrapTabs" (events)="onTabsEvent($event)">
+        <ngx-strap-tab tabTitle="Tab 1">
+          Tab 1 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+        <ngx-strap-tab>
+          <ng-template #ngxStrapTabTitle>
+            Template Title
+          </ng-template>
+          Tab 2 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+        <ngx-strap-tab tabTitle="Disabled" [tabDisabled]="true">
+          Tab 3 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+      </ngx-strap-tabs>
+      <p>Events: {{tabsEvents.join(', ')}}</p>
+      <p>Shown Tab: {{ eventsDemo.shownTab | async }}</p>
+    </section>
+
+  </section>
+  <hr>
+  <section class="my-5">
+    <h4>Layout Variations</h4>
+    <p>
+      The directive exposes several inputs to vary the layout and styling of the tabs.
+    </p>
+
+    <h5>Pills</h5>
+    <markdown ngPreserveWhitespaces>
+    ```html
+    &lt;ngx-strap-tabs navClass="nav nav-pills"&gt;...&lt;/ngx-strap-tabs&gt;
+    ```
+    </markdown>
+
+    <section class="my-4">
+      <ngx-strap-tabs navClass="nav nav-pills">
+        <ngx-strap-tab tabTitle="Tab 1">
+          Tab 1 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+        <ngx-strap-tab>
+          <ng-template #ngxStrapTabTitle>
+            Template Title
+          </ng-template>
+          Tab 2 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+        <ngx-strap-tab tabTitle="Disabled" [tabDisabled]="true">
+          Tab 3 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+      </ngx-strap-tabs>
+    </section>
+
+    <h5>Vertical Pills</h5>
+    <markdown ngPreserveWhitespaces>
+    ```html
+    &lt;ngx-strap-tabs
+      containerClass="row"
+      navContainerClass="col-auto"
+      contentContainerClass="col"
+      navClass="nav nav-pills flex-column">...&lt;/ngx-strap-tabs>
+    ```
+    </markdown>
+
+    <section class="my-4">
+      <ngx-strap-tabs
+        containerClass="row"
+        navContainerClass="col-auto"
+        contentContainerClass="col"
+        navClass="nav nav-pills flex-column">
+        <ngx-strap-tab tabTitle="Tab 1">
+          Tab 1 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+        <ngx-strap-tab>
+          <ng-template #ngxStrapTabTitle>
+            Template Title
+          </ng-template>
+          Tab 2 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+        <ngx-strap-tab tabTitle="Disabled" [tabDisabled]="true">
+          Tab 3 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+      </ngx-strap-tabs>
+    </section>
+
+    <p>
+      Use Bootstrap's <code>order-</code> classes to place the nav to the right.
+    </p>
+
+    <markdown ngPreserveWhitespaces>
+    ```html
+    &lt;ngx-strap-tabs
+      containerClass="row"
+      navContainerClass="col-auto order-2"
+      contentContainerClass="col order-1"
+      navClass="nav nav-pills flex-column">...&lt;/ngx-strap-tabs>
+    ```
+    </markdown>
+
+    <section class="my-4">
+      <ngx-strap-tabs
+        containerClass="row"
+        navContainerClass="col-auto order-2"
+        contentContainerClass="col order-1"
+        navClass="nav nav-pills flex-column">
+        <ngx-strap-tab tabTitle="Tab 1">
+          Tab 1 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+        <ngx-strap-tab>
+          <ng-template #ngxStrapTabTitle>
+            Template Title
+          </ng-template>
+          Tab 2 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+        <ngx-strap-tab tabTitle="Disabled" [tabDisabled]="true">
+          Tab 3 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+      </ngx-strap-tabs>
+    </section>
+
+    <h5>List Group</h5>
+    <markdown ngPreserveWhitespaces>
+    ```html
+    &lt;ngx-strap-tabs
+      containerClass="row"
+      navContainerClass="col-auto"
+      contentContainerClass="col"
+      navClass="list-group"
+      navLinkClass="list-group-item list-group-item-action"&gt;...&lt;/ngx-strap-tabs>
+    ```
+    </markdown>
+    <section class="my-4">
+      <ngx-strap-tabs
+        containerClass="row"
+        navContainerClass="col-auto"
+        contentContainerClass="col"
+        navClass="list-group"
+        navLinkClass="list-group-item list-group-item-action">
+        <ngx-strap-tab tabTitle="Tab 1">
+          Tab 1 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+        <ngx-strap-tab>
+          <ng-template #ngxStrapTabTitle>
+            Template Title
+          </ng-template>
+          Tab 2 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+        <ngx-strap-tab tabTitle="Disabled" [tabDisabled]="true">
+          Tab 3 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+      </ngx-strap-tabs>
+    </section>
+    <h5>Plain</h5>
+    <markdown ngPreserveWhitespaces>
+    ```html
+    &lt;ngx-strap-tabs
+      navClass="nav"&gt;...&lt;/ngx-strap-tabs>
+    ```
+    </markdown>
+      <section class="my-4">
+        <ngx-strap-tabs
+          navClass="nav">
+          <ngx-strap-tab tabTitle="Tab 1">
+            Tab 1 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </ngx-strap-tab>
+          <ngx-strap-tab>
+            <ng-template #ngxStrapTabTitle>
+              Template Title
+            </ng-template>
+            Tab 2 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </ngx-strap-tab>
+          <ngx-strap-tab tabTitle="Disabled" [tabDisabled]="true">
+            Tab 3 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </ngx-strap-tab>
+        </ngx-strap-tabs>
+      </section>
+
+    <h5>Custom</h5>
+    <markdown ngPreserveWhitespaces>
+    ```html
+    &lt;ngx-strap-tabs
+      navClass="nav"
+      navLinkClass="nav-link my-horizontal-nav-link"&gt;...&lt;/ngx-strap-tabs>
+    ```
+    ```scss
+    .my-horizontal-nav-link {{ '{' }}
+      padding-bottom: 0;
+      border-bottom: 4px solid transparent;
+      &:hover {{ '{' }}
+        border-bottom: 4px solid $gray-200;
+      }
+      &.active {{ '{' }}
+        border-bottom: 4px solid $primary;
+      }
+    }
+    ```
+    </markdown>
+    <section class="my-4">
+      <ngx-strap-tabs
+        navClass="nav"
+        navLinkClass="nav-link my-horizontal-nav-link">
+        <ngx-strap-tab tabTitle="Tab 1">
+          Tab 1 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+        <ngx-strap-tab>
+          <ng-template #ngxStrapTabTitle>
+            Template Title
+          </ng-template>
+          Tab 2 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+        <ngx-strap-tab tabTitle="Disabled" [tabDisabled]="true">
+          Tab 3 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </ngx-strap-tab>
+      </ngx-strap-tabs>
+    </section>
+  </section>
+
+
+</div>
