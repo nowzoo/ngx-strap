@@ -15,37 +15,37 @@
   }
 }
 
-.page {
-  >section.page-section {
-    margin-bottom: 2em;
-    padding-bottom: 2em;
-    border-bottom: 1px solid $gray-300;
-    >section.demo-section {
-      margin-bottom: 2em;
-      >section.code {
-        margin-bottom: 1em;
-      }
-      >section.demo {
-        background: $gray-300;
-        border-radius: 4px;
-        padding: 2em 1em 1em 1em;
-        margin-bottom: 1em;
-        position: relative;
-        &:before {
-          content: 'Demo';
-          display: block;
-          position: absolute;
-          top: 0;
-          left: 0;
-          font-size: .75em;
-          padding: 0 1em;
-          line-height: 2em;
-          background-color: $gray-600;
-          color: #FFF;
-          border-radius: 4px 0 4px 0;
+section.demo {
+  background: $gray-300;
+  border-radius: 4px;
+  padding: 2em 1em 1em 1em;
+  margin-bottom: 1em;
+  position: relative;
+  &:before {
+    content: 'Demo';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: .75em;
+    padding: 0 1em;
+    line-height: 2em;
+    background-color: $gray-600;
+    color: #FFF;
+    border-radius: 4px 0 4px 0;
 
-        }
-      }
+  }
+}
+
+section.page-section {
+  margin-bottom: 2em;
+  padding-bottom: 2em;
+  border-bottom: 1px solid $gray-300;
+  >section.demo-section {
+    margin-bottom: 2em;
+    >section.code {
+      margin-bottom: 1em;
     }
+
   }
 }

@@ -1,25 +1,17 @@
 import { Directive, OnInit, OnChanges, OnDestroy, Input, TemplateRef, ElementRef,
-  ComponentFactoryResolver, ViewContainerRef, SimpleChanges } from '@angular/core';
+  ComponentFactoryResolver, ViewContainerRef, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { AbstractPopup } from './abstract-popup';
+import { IPopupOptions } from './shared';
 @Directive({
   selector: '[ngxStrapTooltip]',
   exportAs: 'ngxStrapTooltip'
 })
 export class TooltipDirective extends AbstractPopup implements OnInit, OnChanges, OnDestroy {
   @Input() tooltipTitle: string | TemplateRef<any>;
-
-  @Input() tooltipAnimation: boolean;
-  @Input() tooltipHtml: boolean;
-  @Input() tooltipDelay: number | {show: number, hide: number};
-  @Input() tooltipContainer: string | HTMLElement | false;
-  @Input() tooltipTemplate: string;
-  @Input() tooltipPlacement: string | ((popupEl: HTMLElement, triggerEl: HTMLElement) => string);
-  @Input() tooltipOffset: number | string;
-  @Input() tooltipFallbackPlacement: string | string[];
-  @Input() tooltipBoundary: string | HTMLElement;
-
   @Input() tooltipEnabled = true;
   @Input() tooltipDismissOnClickOutside: boolean;
+  @Input() tooltipOptions: IPopupOptions = null;
+  @Output() tooltipEvents: EventEmitter<Event>;
   popupType: 'tooltip' = 'tooltip';
   constructor(
     elementRef: ElementRef,
@@ -27,6 +19,7 @@ export class TooltipDirective extends AbstractPopup implements OnInit, OnChanges
     vcr: ViewContainerRef,
   ) {
     super(elementRef, cfr, vcr);
+    this.tooltipEvents = this.events;
   }
 
   get title(): string | TemplateRef<any> {
@@ -37,42 +30,8 @@ export class TooltipDirective extends AbstractPopup implements OnInit, OnChanges
     return  null;
   }
 
-  get animation(): boolean {
-    return this.tooltipAnimation;
-  }
-  get html(): boolean {
-    return this.tooltipHtml;
-  }
-
-  get delay(): number | {show: number, hide: number} {
-    return this.tooltipDelay;
-  }
-
-
-  get container(): string | HTMLElement | false {
-    return this.tooltipContainer;
-  }
-
-
-  get placement(): string | ((popupEl: HTMLElement, triggerEl: HTMLElement) => string) {
-    return this.tooltipPlacement;
-  }
-
-  get template(): string {
-    return this.tooltipTemplate;
-  }
-
-
-  get offset(): number | string {
-    return this.tooltipOffset;
-  }
-
-  get fallbackPlacement(): string | string[] {
-    return this.tooltipFallbackPlacement;
-  }
-
-  get boundary(): string | HTMLElement {
-    return this.tooltipBoundary;
+  get options(): IPopupOptions {
+    return this.tooltipOptions || {};
   }
 
   get enabled(): boolean {

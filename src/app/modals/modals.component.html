@@ -2,13 +2,54 @@
   <div class="container">
     <h1 class="display-4">Modals</h1>
     <p class="lead">
-      Use the <code>ngxStrapModal</code> directive
-      with an <code>ng-template</code>
-      to create a Bootstrap modal.
+      Directive to display Bootstrap modals.
     </p>
   </div>
 </header>
 
 <div class="container">
-  
+  <section class="page-section">
+    <h4>Basic Demo</h4>
+    <p>
+      Use the <code>ngxStrapModal</code> directive
+      with an <code>ng-template</code>
+      to create a Bootstrap modal.
+      Use the <code>show()</code> method to show it.
+    </p>
+    <section class="demo">
+      <app-modals-basic-demo></app-modals-basic-demo>
+    </section>
+    <section class="code">
+      <markdown src="/assets/modals-basic-demo.md"></markdown>
+    </section>
+  </section>
+
+  <section class="page-section">
+    <h4>Modal Options</h4>
+    <p>
+      Use the native Bootstrap modal <code>data-</code>
+      attributes and classes to control the modal's appearance and behavior.
+    </p>
+    <section class="demo">
+      <app-modals-options-demo></app-modals-options-demo>
+    </section>
+    <section class="code">
+      <markdown src="/assets/modals-options-demo.md"></markdown>
+    </section>
+  </section>
+
+  <section class="page-section">
+    <h4>Modal Promises</h4>
+    <p>
+      The show method returns a on object with <code>shown</code>
+      and <code>hidden</code> promises.
+    </p>
+    <section class="demo">
+      <app-modals-promises-demo></app-modals-promises-demo>
+    </section>
+    <section class="code">
+      <markdown src="/assets/modals-promises-demo.md"></markdown>
+    </section>
+  </section>
+
 </div>

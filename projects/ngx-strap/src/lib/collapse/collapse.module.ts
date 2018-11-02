@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CollapseDirective } from './collapse.directive';
-import { CollapsibleItemComponent } from './collapsible-item.component';
-// import { ListGroupAccordianComponent } from './list-group-accordian/list-group-accordian.component';
 
 @NgModule({
   imports: [
@@ -10,13 +8,9 @@ import { CollapsibleItemComponent } from './collapsible-item.component';
   ],
   declarations: [
     CollapseDirective,
-    CollapsibleItemComponent,
-  //  ListGroupAccordianComponent,
   ],
   exports: [
     CollapseDirective,
-    CollapsibleItemComponent,
-    // ListGroupAccordianComponent,
   ]
 })
 export class CollapseModule { }

@@ -1,0 +1,38 @@
+```html
+<p>
+  <button
+    type="button"
+    class="btn btn-primary mr-4"
+    ngxStrapTooltip
+    [tooltipDismissOnClickOutside]="true"
+    data-trigger="click"
+    title="Click Me (won't dismiss tooltip)">
+    Tooltip (click)
+  </button>
+
+  <button
+    type="button"
+    class="btn btn-primary mr-4"
+    ngxStrapPopover
+    [popoverDismissOnClickOutside]="true"
+    title="Popover Title"
+    [popoverContent]="popoverContent">
+    Popover (click)
+  </button>
+  <ng-template #popoverContent>
+    <p class="text-muted">
+      Interactions within the popover title or content
+      will not dismiss it.
+    </p>
+    <p>
+      <input type="text" class="form-control" placeholder="Enter your name">
+    </p>
+  </ng-template>
+</p>
+
+<p>
+  <a href="#" (click)="$event.preventDefault()">Clicking</a>
+   or focusing outside will dismiss the tooltip or popover.
+  <input type="text" class="form-control" placeholder="Focus me">
+</p>
+```

@@ -1,0 +1,31 @@
+
+
+
+<p>
+  <button
+    type="button"
+    class="btn btn-primary mr-4"
+    ngxStrapTooltip
+    (tooltipEvents)="tooltipEvents.push($event.type)"
+    title="Tooltip Title">
+    Tooltip (hover)
+  </button>
+  <br>
+  Tooltip Events: <small>{{tooltipEvents.join(', ')}}</small>
+</p>
+
+<p>
+  <button
+    type="button"
+    class="btn btn-primary mr-4"
+    ngxStrapPopover
+    (popoverEvents)="popoverEvents.push($event.type)"
+    title="Popover Title"
+    data-placement="top"
+    data-content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.">
+    Popover (click)
+  </button>
+  <br>
+  Popover Events: <small>{{popoverEvents.join(', ')}}</small>
+
+</p>

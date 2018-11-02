@@ -1,30 +1,22 @@
 import {
-  OnInit, OnDestroy, Output, EventEmitter,
+  OnInit, OnDestroy, EventEmitter,
   TemplateRef, ElementRef, ComponentRef, ViewContainerRef, ComponentFactoryResolver
 } from '@angular/core';
 import { PopupPlaceholderComponent } from './popup-placeholder/popup-placeholder.component';
+import { IPopupOptions } from './shared';
 
 declare const jQuery: any;
 
 
 export abstract class AbstractPopup implements OnInit, OnDestroy {
 
-  @Output() events: EventEmitter<Event> = new EventEmitter();
+  protected events: EventEmitter<Event> = new EventEmitter();
 
   abstract popupType: 'popover' | 'tooltip';
 
   abstract title: string | TemplateRef<any>;
   abstract content: string | TemplateRef<any>;
-  abstract animation: boolean;
-  abstract html: boolean;
-  abstract delay: number | {show: number, hide: number};
-  abstract container: string | HTMLElement | false;
-  abstract placement: string | ((popupEl: HTMLElement, triggerEl: HTMLElement) => string);
-  abstract template: string;
-  abstract offset: number | string;
-  abstract fallbackPlacement: string | string[];
-  abstract boundary: string | HTMLElement;
-
+  abstract options: IPopupOptions;
   abstract enabled: boolean;
   abstract dismissOnClickOutside: boolean;
 
@@ -39,34 +31,7 @@ export abstract class AbstractPopup implements OnInit, OnDestroy {
   ) { }
 
   getOptions(): any {
-    const options: any = {};
-    if (typeof this.animation === 'boolean') {
-      options.animation = this.animation;
-    }
-    if (typeof this.html === 'boolean') {
-      options.html = this.html;
-    }
-    if ((typeof this.delay === 'number') || (typeof this.delay === 'object')) {
-      options.delay = this.delay;
-    }
-    if (this.container) {
-      options.container = this.container;
-    }
-    if (typeof this.template === 'string') {
-      options.template = this.template;
-    }
-    if ((typeof this.placement === 'string') || (typeof this.placement === 'function')) {
-      options.placement = this.placement;
-    }
-    if ((typeof this.offset === 'number') || (typeof this.offset === 'string')) {
-      options.offset = this.offset;
-    }
-    if ((typeof this.fallbackPlacement === 'string') || Array.isArray(this.fallbackPlacement)) {
-      options.fallbackPlacement = this.fallbackPlacement;
-    }
-    if (this.boundary) {
-      options.boundary = this.boundary;
-    }
+    const options: any = Object.assign({}, this.options);
     if (this.title) {
       this.titleComponentRef = this.getPlaceholderComponent();
       this.titleComponentRef.instance.inserted = this.title;

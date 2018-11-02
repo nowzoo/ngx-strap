@@ -8,6 +8,126 @@
   </div>
 </header>
 
+
 <div class="container">
+  <section class="page-section">
+    <h4>Basic Demo</h4>
+    <p>
+      The <code>ngxStrapTooltip</code> and <code>ngxStrapPopover</code> directives
+      work out of the box with Bootstrap's native <code>data-</code> attributes.
+    </p>
+    <section class="demo">
+      <app-popups-basic-demo></app-popups-basic-demo>
+    </section>
+    <section class="code">
+      <markdown src="/assets/popups-basic-demo.md"></markdown>
+    </section>
+  </section>
+
+  <section class="page-section">
+    <h4>Dynamic Strings</h4>
+    <p>
+      Use <code>[tooltipTitle]</code>, <code>[popoverTitle]</code>
+      and <code>[popoverContent]</code> to pass dynamic strings.
+    </p>
+    <section class="demo">
+      <app-popups-dynamic-demo></app-popups-dynamic-demo>
+    </section>
+    <section class="code">
+      <markdown src="/assets/popups-dynamic-demo.md"></markdown>
+    </section>
+  </section>
+
+  <section class="page-section">
+    <h4>Templates</h4>
+    <p>
+      For more complex markup and bindings, pass template references to
+      <code>[tooltipTitle]</code>, <code>[popoverTitle]</code>
+      and <code>[popoverContent]</code>.
+    </p>
+    <section class="demo">
+      <app-popups-template-demo></app-popups-template-demo>
+    </section>
+    <section class="code">
+      <markdown src="/assets/popups-template-demo.md"></markdown>
+    </section>
+  </section>
+
+  <section class="page-section">
+    <h4>Enabling / Disabling</h4>
+    <p>
+      Use <code>[tooltipEnabled]</code> to control whether a tooltip is shown.
+      Use <code>[popoverEnabled]</code> to control whether a popover is shown.
+    </p>
+    <section class="demo">
+      <app-popups-enabled-demo></app-popups-enabled-demo>
+    </section>
+    <section class="code">
+      <markdown src="/assets/popups-enabled-demo.md"></markdown>
+    </section>
+  </section>
+
+  <section class="page-section">
+    <h4>Dismiss on Outside Click or Focus</h4>
+    <p>
+      Use <code>[tooltipDismissOnClickOutside]="true"</code>
+      or <code>[popoverDismissOnClickOutside]="true"</code>
+      to control whether the popup is dismissed when the user
+      focuses or clicks an element outside of it.
+    </p>
+    <section class="demo">
+      <app-popups-dismiss-demo></app-popups-dismiss-demo>
+    </section>
+    <section class="code">
+      <markdown src="/assets/popups-dismiss-demo.md"></markdown>
+    </section>
+  </section>
+
+  <section class="page-section">
+    <h4>Setting Options</h4>
+    <p>
+      Most popover and tooltip options can be set using
+      <code>data-</code> attributes. You may, however, find
+      it convenient to pass options to the directive directly.
+      Use <code>[tooltipOptions]="..."</code>
+      or <code>[popoverOptions]="..."</code>. Both accept an
+      instance of <code>IPopupOptions</code>.
+    </p>
+    <section class="demo">
+      <app-popups-options-demo></app-popups-options-demo>
+    </section>
+    <section class="code">
+      <markdown src="/assets/popups-options-demo.md"></markdown>
+    </section>
+  </section>
+
+  <section class="page-section">
+    <h4>Events</h4>
+    <p>
+      The native Bootstrap tooltip and popover events are exposed
+      via <code>tooltipEvents</code> and <code>popoverEvents</code> respectively.
+    </p>
+    <section class="demo">
+      <app-popups-events-demo></app-popups-events-demo>
+    </section>
+    <section class="code">
+      <markdown src="/assets/popups-events-demo.md"></markdown>
+    </section>
+  </section>
+
+  <section class="page-section">
+    <h4>Manual Trigger</h4>
+    <p>
+      Both the tooltip and popover directives have
+      <code>show()</code>, <code>hide()</code>
+      and <code>toggle()</code> methods.
+    </p>
+    <section class="demo">
+      <app-popups-show-demo></app-popups-show-demo>
+    </section>
+    <section class="code">
+      <markdown src="/assets/popups-show-demo.md"></markdown>
+    </section>
+  </section>
 
 </div>

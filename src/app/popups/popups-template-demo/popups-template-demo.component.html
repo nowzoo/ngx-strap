@@ -1,0 +1,28 @@
+<button
+  type="button"
+  class="btn btn-primary mr-4"
+  ngxStrapTooltip
+  [tooltipTitle]="tooltipTitle">
+  Tooltip (hover)
+</button>
+<ng-template #tooltipTitle>
+ <i class="fas fa-clock fa-fw"></i>
+ {{ time }}
+</ng-template>
+
+<button
+  type="button"
+  class="btn btn-primary mr-4"
+  ngxStrapPopover
+  [popoverTitle]="popoverTitle"
+  [popoverContent]="popoverContent">
+  Popover (click)
+</button>
+<ng-template #popoverTitle>
+  <i class="fas fa-smile-wink fa-fw"></i>
+ Welcome, {{ name }}!
+</ng-template>
+<ng-template #popoverContent>
+  <h6>Current Time</h6>
+  <p style="font-size: 2.5em; text-align: center">{{ time }}</p>
+</ng-template>

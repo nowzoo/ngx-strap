@@ -2,9 +2,6 @@
 <p>
 Event Types: <small>{{collapseEvents.join(', ')}}</small>
 </p>
-<p>
-Status: <small>{{collapse.status}}</small>
-</p>
 <button
   type="button"
   class="btn btn-primary"

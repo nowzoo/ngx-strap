@@ -1,6 +1,8 @@
 import { Directive, OnInit, OnChanges, SimpleChanges, OnDestroy, Input, TemplateRef, ElementRef,
-  ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
+  ComponentFactoryResolver, ViewContainerRef, Output, EventEmitter } from '@angular/core';
 import { AbstractPopup } from './abstract-popup';
+import { IPopupOptions } from './shared';
+
 @Directive({
   selector: '[ngxStrapPopover]',
   exportAs: 'ngxStrapPopover'
@@ -8,19 +10,10 @@ import { AbstractPopup } from './abstract-popup';
 export class PopoverDirective extends AbstractPopup implements OnInit, OnChanges, OnDestroy {
   @Input() popoverContent: string | TemplateRef<any>;
   @Input() popoverTitle: string | TemplateRef<any>;
-
-  @Input() popoverAnimation: boolean;
-  @Input() popoverHtml: boolean;
-  @Input() popoverDelay: number | {show: number, hide: number};
-  @Input() popoverContainer: string | HTMLElement | false;
-  @Input() popoverPlacement: string | ((popupEl: HTMLElement, triggerEl: HTMLElement) => string);
-  @Input() popoverTemplate: string;
-  @Input() popoverOffset: number | string;
-  @Input() popoverFallbackPlacement: string | string[];
-  @Input() popoverBoundary: string | HTMLElement;
-
+  @Input() popoverOptions: IPopupOptions = null;
   @Input() popoverEnabled = true;
   @Input() popoverDismissOnClickOutside: boolean;
+  @Output() popoverEvents: EventEmitter<Event>;
   popupType: 'popover' = 'popover';
   constructor(
     elementRef: ElementRef,
@@ -28,6 +21,7 @@ export class PopoverDirective extends AbstractPopup implements OnInit, OnChanges
     vcr: ViewContainerRef,
   ) {
     super(elementRef, cfr, vcr);
+    this.popoverEvents = this.events;
   }
 
   get title(): string | TemplateRef<any> {
@@ -38,42 +32,8 @@ export class PopoverDirective extends AbstractPopup implements OnInit, OnChanges
     return this.popoverContent || null;
   }
 
-  get animation(): boolean {
-    return this.popoverAnimation;
-  }
-  get html(): boolean {
-    return this.popoverHtml;
-  }
-
-  get delay(): number | {show: number, hide: number} {
-    return this.popoverDelay;
-  }
-
-
-  get container(): string | HTMLElement | false {
-    return this.popoverContainer;
-  }
-
-
-  get placement(): string | ((popupEl: HTMLElement, triggerEl: HTMLElement) => string) {
-    return this.popoverPlacement;
-  }
-
-  get template(): string {
-    return this.popoverTemplate;
-  }
-
-
-  get offset(): number | string {
-    return this.popoverOffset;
-  }
-
-  get fallbackPlacement(): string | string[] {
-    return this.popoverFallbackPlacement;
-  }
-
-  get boundary(): string | HTMLElement {
-    return this.popoverBoundary;
+  get options(): IPopupOptions {
+    return this.popoverOptions || {};
   }
 
   get enabled(): boolean {

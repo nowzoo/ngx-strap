@@ -1,4 +1,4 @@
-import { Directive, OnDestroy, TemplateRef, ApplicationRef, EmbeddedViewRef, Output, EventEmitter } from '@angular/core';
+import { Directive, OnDestroy, TemplateRef, ApplicationRef, EmbeddedViewRef, Output, EventEmitter, NgZone } from '@angular/core';
 import { filter, take } from 'rxjs/operators';
 declare const jQuery: any;
 
@@ -10,11 +10,13 @@ export class ModalDirective implements OnDestroy {
 
   @Output() events: EventEmitter<Event> = new EventEmitter();
   $el: any;
+  el: HTMLElement;
 
 
   constructor(
     private _appRef: ApplicationRef,
-    private _templateRef: TemplateRef<any>
+    private _templateRef: TemplateRef<any>,
+    private _ngZone: NgZone
   ) { }
 
   get appRef(): ApplicationRef {
@@ -32,18 +34,22 @@ export class ModalDirective implements OnDestroy {
   show(): {shown: Promise<void>, hidden: Promise<void>} {
     const viewRef: EmbeddedViewRef<any> = this.templateRef.createEmbeddedView({modalDirective: this});
     this.appRef.attachView(viewRef);
-    const el = viewRef.rootNodes[0];
-    document.body.appendChild(el);
-    this.$el = jQuery(el);
+    this.el = viewRef.rootNodes[0];
+    document.body.appendChild(this.el);
+    this.$el = jQuery(this.el);
     this.$el.modal({show: false});
     this.$el.on('show.bs.modal shown.bs.modal hide.bs.modal hidden.bs.modal', (event) => {
-      this.events.emit(event);
+      this._ngZone.run(() => {
+        this.events.emit(event);
+      });
     });
     const shown = new Promise<void>(resolve => {
       this.events
         .pipe(filter(e => 'shown' === e.type))
         .pipe(take(1))
-        .subscribe(() => resolve());
+        .subscribe(() => {
+          this._ngZone.run(resolve);
+        });
     });
      const hidden = new Promise<void>(resolve => {
       this.events
@@ -57,7 +63,8 @@ export class ModalDirective implements OnDestroy {
       this.$el.off('show.bs.modal shown.bs.modal hide.bs.modal hidden.bs.modal');
       this.$el.modal('dispose');
       this.$el = null;
-      document.body.removeChild(el);
+      document.body.removeChild(this.el);
+      this.el = null;
       this.appRef.detachView(viewRef);
       viewRef.destroy();
     });

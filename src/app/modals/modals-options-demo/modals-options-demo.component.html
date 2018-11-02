@@ -1,0 +1,241 @@
+<ng-template ngxStrapModal #noAnimModal="ngxStrapModal">
+  <div class="modal" id="exampleModalNoAnimation" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalNoAnimationLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalNoAnimationLabel">No Animation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Disable animation by removing the <code>.fade</code>
+          class from the <code>.modal</code> element.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<button type="button"
+  class="btn btn-primary mr-4"
+  (click)="noAnimModal.show()">
+  Modal w/o Animation
+</button>
+
+<ng-template ngxStrapModal #smallModal="ngxStrapModal">
+  <div class="modal fade" id="exampleModalSmall" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalSmallLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalSmallLabel">Small Modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Add the <code>.modal-sm</code>
+          class to the <code>.modal-dialog</code> element.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<button type="button"
+  class="btn btn-primary mr-4"
+  (click)="smallModal.show()">
+  Small Modal
+</button>
+
+
+<ng-template ngxStrapModal #lgModal="ngxStrapModal">
+  <div class="modal fade" id="exampleModalNoBackdrop" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalNoBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalNoBackdropLabel">Large Modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Add the <code>.modal-lg</code>
+          class to the <code>.modal-dialog</code> element.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<button type="button"
+  class="btn btn-primary mr-4"
+  (click)="lgModal.show()">
+  Large Modal
+</button>
+
+<ng-template ngxStrapModal #centeredModal="ngxStrapModal">
+  <div class="modal fade" id="exampleModalCentered" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenteredLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenteredLabel">Centered Modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Add the <code>.modal-dialog-centered</code>
+          class to the <code>.modal-dialog</code> element.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<button type="button"
+  class="btn btn-primary mr-4"
+  (click)="centeredModal.show()">
+  Centered Modal
+</button>
+
+<hr>
+
+<ng-template ngxStrapModal #noBackdropModal="ngxStrapModal">
+  <div class="modal fade" id="exampleModalNoBackdrop" tabindex="-1" role="dialog"
+    data-backdrop="false"
+    aria-labelledby="exampleModalNoBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalNoBackdropLabel">No Backdrop Modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Set <code>data-backdrop="false"</code>
+          class in the top-level <code>.modal</code> element.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<button type="button"
+  class="btn btn-primary mr-4"
+  (click)="noBackdropModal.show()">
+  No Backdrop
+</button>
+
+<ng-template ngxStrapModal #staticBackdropModal="ngxStrapModal">
+  <div class="modal fade" id="exampleModalStaticBackdrop" tabindex="-1" role="dialog"
+    data-backdrop="static"
+    aria-labelledby="exampleModalStaticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalStaticBackdropLabel">Static Backdrop</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Clicking on the backdrop does not dismiss the modal.
+          </p>
+          Set <code>data-backdrop="static"</code>
+          class in the top-level <code>.modal</code> element.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<button type="button"
+  class="btn btn-primary mr-4"
+  (click)="staticBackdropModal.show()">
+  Static Backdrop
+</button>
+
+
+<ng-template ngxStrapModal #noKeyboardModal="ngxStrapModal">
+  <div class="modal fade" id="exampleModalNoKeyboard" tabindex="-1" role="dialog"
+    data-keyboard="false"
+    aria-labelledby="exampleModalNoKeyboardLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalNoKeyboardLabel">Static Backdrop</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Pressing the <code>esc</code> key does not dismiss the modal.
+          </p>
+          Set <code>data-keyboard="false"</code>
+          class in the top-level <code>.modal</code> element.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<button type="button"
+  class="btn btn-primary mr-4"
+  (click)="noKeyboardModal.show()">
+  No Keyboard Event
+</button>
+
+
+<ng-template ngxStrapModal #noFocusModal="ngxStrapModal">
+  <div class="modal fade" id="exampleModalNoFocus" tabindex="-1" role="dialog"
+    data-focus="false"
+    aria-labelledby="exampleModalNoFocusLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalNoFocusLabel">Static Backdrop</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            The modal does not receive focus when shown.
+          </p>
+          Set <code>data-focus="false"</code>
+          class in the top-level <code>.modal</code> element.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<button type="button"
+  class="btn btn-primary mr-4"
+  (click)="noFocusModal.show()">
+  No Focus
+</button>

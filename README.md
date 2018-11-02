@@ -1,6 +1,7 @@
 # ngx-strap
 
-Angular directives for Bootstrap. Unlike other Angular/Bootstrap libraries, `ngx-strap` leverages native Bootstrap javascript and css rather than recreating Bootstrap from scratch "the Angular way."
+Minimal Angular directives for Bootstrap. Unlike other Angular/Bootstrap libraries, `ngx-strap`
+leverages native Bootstrap javascript and css rather than recreating them from scratch.
 
 This means the library depends on `bootstrap.js` and its dependencies. If the statement `declare const jQuery: any` gives you agita, you should probably look elsewhere.
 
@@ -193,15 +194,15 @@ Both tooltips and popovers can be populated with dynamic strings...
 
 An interface containing most of the Bootstrap toolitip/popover options (all except `title`, `content`, and `selector`.)
 
-- `animation: boolean`
-- `html: boolean`
-- `delay: number | {show: number, hide: number}`
-- `container: string | HTMLElement | false`
-- `placement: string | ((popupEl: HTMLElement, triggerEl: HTMLElement) => string)``
-- `template: string`
-- `offset: number | string`
-- `fallbackPlacement: string | string[]`
-- `boundary: string | HTMLElement`
+- `animation?: boolean`
+- `html?: boolean`
+- `delay?: number | {show: number, hide: number}`
+- `container?: string | HTMLElement | false`
+- `placement?: string | ((popupEl: HTMLElement, triggerEl: HTMLElement) => string)``
+- `template?: string`
+- `offset?: number | string`
+- `fallbackPlacement?: string | string[]`
+- `boundary?: string | HTMLElement`
 
 #### `TooltipDirective` API
 
@@ -216,7 +217,7 @@ Optional. Pass a string or a template for the tooltip title. If you don’t need
 - `tooltipOptions: IPopupOptions` Optional. Note that in most cases you can use the native Bootstrap `data-` attributes instead. Also note that these options are not dynamic &mdash; they are set only once, when the directive is instantiated.
 
 **Outputs**
-- `events: EventEmitter<Event>` The native Bootstrap tooltip events.
+- `tooltipEvents: EventEmitter<Event>` The native Bootstrap tooltip events.
 
 **Methods**
 - `show(): void` Show the tooltip manually.
@@ -237,7 +238,7 @@ Optional. Pass a string or a template for the tooltip title. If you don’t need
 - `popoverOptions: IPopupOptions` Optional. Note that in most cases you can use the native Bootstrap `data-` attributes instead. Also note that these options are not dynamic &mdash; they are set only once, when the directive is instantiated.
 
 **Outputs**
-- `events: EventEmitter<Event>` The native Bootstrap popover events.
+- `popoverEvents: EventEmitter<Event>` The native Bootstrap popover events.
 
 **Methods**
 - `show(): void` Show the popover manually.

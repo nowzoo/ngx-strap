@@ -1,0 +1,15 @@
+<button
+  type="button"
+  class="btn btn-primary mr-4"
+  ngxStrapTooltip
+  [tooltipTitle]="time">
+  Tooltip (hover)
+</button>
+<button
+  type="button"
+  class="btn btn-primary mr-4"
+  ngxStrapPopover
+  [popoverTitle]="'Welcome, ' + name"
+  [popoverContent]="'The current time is ' + time + '.'">
+  Popover (click)
+</button>
