@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ModalDirective } from '../../modules/modal/modal.directive';
+import { ModalDirective } from '@nowzoo/ngx-strap';
 @Component({
   selector: 'app-modals-promises-demo',
   templateUrl: './modals-promises-demo.component.html',

@@ -6,9 +6,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MarkdownModule } from 'ngx-markdown';
 
-import { ModalModule } from './modules/modal/modal.module';
-import { PopupModule } from './modules/popup/popup.module';
-import { CollapseModule } from './modules/collapse/collapse.module';
+import { ModalModule, PopupModule, CollapseModule } from '@nowzoo/ngx-strap';
 
 import { AppComponent } from './app.component';
 

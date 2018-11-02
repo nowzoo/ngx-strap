@@ -17,7 +17,7 @@ cd ../..
 
 
 # build the demo
-ng build --aot --prod --base-href /ngx-strap/
+ng build --aot --prod 
 
 # write the version to the demo...
 # echo "${VERSION}" >> docs/VERSION
